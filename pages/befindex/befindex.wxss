@@ -1,0 +1,58 @@
+/* pages/befindex/befindex.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.userinfo-avatar {
+  width: 170rpx;
+  height: 170rpx;
+  padding: 60rpx 0;
+}
+
+.userinfo-nickname {
+  color: #000;
+  font-size: 42rpx;
+}
+.tip{
+  text-align: center;
+  color: #969696;
+  font-size: 28rpx;
+  padding: 5rpx 0;
+}
+.pt21{
+  padding-top: 42rpx;
+}
+.pb80{
+  padding-bottom: 160rpx;
+}
+.cabinet-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40rpx;
+}
+.cabinet-box .add{
+  font-size: 32rpx;
+  color: #969696
+}
+.smartark{
+  font-size: 34rpx;
+  font-weight: bold
+}
+.mt18{
+  margin-top: 36rpx;
+}
+.img{
+  width: 90%;
+  background-color: #37d091;
+  display:block;
+  color: #FFF;
+  border-radius: 20rpx;
+  text-align: center;
+  margin: auto;
+  line-height: 100rpx;
+  font-size: 36rpx;
+}

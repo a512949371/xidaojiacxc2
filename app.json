@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/befindexmin/befindexmin",
+    "pages/index/index",
+    "pages/befindex/befindex",
+    "pages/orderlist/orderlist",
+    "pages/orderlist/orderdetail/orderdetail",
+    "pages/orderlist/errorderdetail/errorderdetail",
+    "pages/orderlist/evaluation/evaluation",
+    "pages/smartark/smartark",
+    "pages/my/my",
+    "pages/my/myinfo/myinfo",
+    "pages/login/login",
+    "pages/index/weatertype/weatertype",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "洗到家",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon_5-1.png",
+        "selectedIconPath": "images/icon_5.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/orderlist/orderlist",
+        "iconPath": "images/icon_6-1.png",
+        "selectedIconPath": "images/icon_6.png",
+        "text": "订单"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/icon_7-1.png",
+        "selectedIconPath": "images/icon_7.png",
+        "text": "个人中心"
+      }
+    ]
+  }
+}

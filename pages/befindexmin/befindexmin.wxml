@@ -1,0 +1,12 @@
+<!--pages/befindex/befindex.wxml-->
+  <form bindsubmit='formSubmit' report-submit="true">
+<view class="container">
+  <view class='img-box'>
+      <image   src="http://p7grh1j0l.bkt.clouddn.com/xidaojia_loadding.png" background-size="cover"></image>
+  </view>
+  <view class='mt18'>
+  <button class='img' formType="submit" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">开启</button>
+  <view wx:else class='' style='padding-left:40rpx'>请升级微信版本</view>
+  </view>
+</view>
+  </form>

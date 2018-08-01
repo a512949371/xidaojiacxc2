@@ -1,0 +1,33 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+      <image  class="userinfo-avatar" src="../../images/logo.png" background-size="cover"></image>
+  </view>
+  <view>
+   <view class="register-box mt20">
+   <view>
+    <view class='desc'>手机号码</view>
+    <view class="input-box">
+     <view class="right"><input type="number" bindinput='Input' data-num='1' value="{{phone}}"/></view> 
+     <view class='clearphone' bindtap='Clearphone' wx:if="{{clearphone}}">X</view>
+    </view>
+   </view>
+   <view class='mt40'>
+   <view class='desc'>验证码</view>
+    <view class="input-box ">
+     <view class="right"><input type="number" bindinput='Input' data-num='2' value="{{sms}}" /></view>
+     <view class="phone {{gosms?'sky':''}}" bindtap='Sms' >{{smsText}}</view>
+    </view>
+   </view>
+    <view class="mt60">
+    <view class='rule-box'>
+    <view class='check-btn' bindtap='Agreed'>
+    <view wx:if="{{agreedtf}}"><image src='../../images/icon_8-1.png' ></image></view>
+    <view wx:else><image src='../../images/icon_8.png' ></image></view>
+    </view>
+    <view>我已阅读并同意<text class='rules'>《洗到家服务协议》</text></view></view>
+    	<button  class="img {{logintf?'sky':''}}" bindtap='Registerlogin'>登录</button>
+    </view>
+   </view>
+  </view>
+</view>

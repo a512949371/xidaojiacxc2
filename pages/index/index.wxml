@@ -1,0 +1,63 @@
+<swiper indicator-dots="{{indicatorDots}}"
+  indicator-active-color="#fff" indicator-color="{{indicatorcolor}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{circular}}" class='banner-box'>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+    <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+      <image src="{{item}}" class="slide-image"/>
+    </button>
+  </form>
+    </swiper-item>
+  </block>
+</swiper>
+<view>
+<view class='tit'>专业洗护范围</view>
+<view class='classification-box'>
+ <block wx:for="{{classificationdata}}" wx:key="{{item.id}}"> 
+ <view class="classification {{(index+1)%2==0?'flex-box-end':''}}" bindtap='Go' data-id='{{item.id}}' data-name='{{item.name}}' data-index='{{index}}'>
+ <form bindsubmit='formSubmit' report-submit="true">
+ <button formType="submit" class='submit-box' >
+  <image src='{{item.typeImg}}'></image>
+  </button>
+  </form>
+ </view>
+ </block>
+</view>
+</view>
+<view class='inner-banner' bindtap='Gosmartlist'>
+<form bindsubmit='formSubmit' report-submit="true">
+ <button formType="submit" class='submit-box' >
+<image src='../../images/smartask.png'></image>
+</button>
+  </form>
+</view>
+<view class='mb10'>
+<view class='tit'>高端服务品质</view>
+<view class='service-box'>
+ <view class='service'>
+ <image src='../../images/icon_1.png'></image>
+ <view class='service-tit'>下单流程</view>
+ </view>
+ <view class='service'>
+ <image src='../../images/icon_2.png'></image>
+ <view class='service-tit'>洗护流程</view>
+ </view>
+ <view class='service'>
+ <image src='../../images/icon_3.png'></image>
+ <view class='service-tit'>服务价格</view>
+ </view>
+ <view class='service'>
+ <image src='../../images/icon_4.png'></image>
+ <view class='service-tit'>服务范围</view>
+ </view>
+</view>
+</view>
+<view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>

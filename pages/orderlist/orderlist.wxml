@@ -1,0 +1,82 @@
+<!--pages/orderlist/orderlist.wxml-->
+ <view class='topnav'>
+  <view class="nav-item " bindtap='Navtab' data-type='' data-index='1'><text class="{{index==1?'active':''}}">全部</text></view>
+  <view class="nav-item" bindtap='Navtab' data-type='1' data-index='2'><text class="{{index==2?'active':''}}">清洗中</text></view>
+  <view class="nav-item" bindtap='Navtab' data-type='2' data-index='3'><text class="{{index==3?'active':''}}">待取衣</text></view>
+  <view class="nav-item" bindtap='Navtab' data-type='3' data-index='4'><text class="{{index==4?'active':''}}">待评价</text></view>
+ </view>
+<view class='bge5 order-list' wx:if="{{loginTF}}">
+ <view class='img-box flex-box'>
+  <image src='http://p7grh1j0l.bkt.clouddn.com/order_login.png'></image>
+ </view>
+ <view class='desc'>您当前还未登录,登录后即可查看</view>
+ <view class='btn' style='margin-top:60rpx' bindtap='Gologin'>立即登录</view>
+</view>
+<view class='bge5' wx:else>
+ <view class='order-list' wx:if="{{dataTF}}">
+  <view class='img-box flex-box'>
+  <image src='http://p7grh1j0l.bkt.clouddn.com/order_on.png'></image>
+ </view>
+ <view class='desc'>此处还没有订单</view>
+ <view class='desc'>请到智能洗衣柜前下单洗衣</view>
+ <view class='btn' bindtap='Gosmark'>查看附件智能柜</view>
+ </view>
+ <view wx:else>
+ <view class='list-box'>
+ <block wx:for="{{orderlistdata}}" wx:key="{{item.id}}">
+  <view class='list' >
+  <view bindtap='Godetail' data-id='{{item.id}}' data-errstatus='{{item.unusualStatus}}' data-status='{{item.status}}'>
+  <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+   <view class='list-order'>
+    <view >订单编号:{{item.orderNo}}</view>
+    <view class='stat-box' wx:if="{{item.status==0}}">待放件</view>
+    <view class='stat-box' wx:if="{{item.status==1}}">已放件<text wx:if="{{item.unusualStatus==-2}}">-异常订单</text></view>
+    <view class='stat-box' wx:if="{{item.status==2}}">已送衣</view>
+    <view class='stat-box' wx:if="{{item.status==3}}">清洗中</view>
+    <view class='stat-box' wx:if="{{item.status==4}}">送回中<text wx:if="{{item.unusualStatus==-2}}">-异常订单</text></view>
+    <view class='stat-box' wx:if="{{item.status==5}}">待取衣<text wx:if="{{item.unusualStatus==-1}}">-已取消</text><text wx:if="{{item.unusualStatus==-2}}">-订单异常</text></view>
+    <view class='stat-box' wx:if="{{item.status==6}}">待评价</view>
+    <view class='stat-box' wx:if="{{item.status==7}}">已完成</view>
+   </view>
+   <view class='img-list-box'>
+    <block wx:for="{{item.orderClothes}}" wx:key="{{item.id}}">
+    <view class="img-list {{(index+1)%2==0?'pl20':''}}">
+    <view class='flex-box'>
+    <image class='img' src='{{item.typeImg}}'></image>
+    <view>     
+    <view class='type'>{{item.clothesName}}</view>
+     <view class='number'>X{{item.clothesNum}}
+     <text class='pl10' wx:if="{{item.orderClothesTwo.length>0}}">(<block wx:for="{{item.orderClothesTwo}}"><text class='pd5'>{{item.clothesName}}:{{item.clothesNum}}</text></block>)</text>
+     </view>
+     </view>
+    </view>
+    </view>
+    </block>
+   </view>
+   <view class='desc'>智能柜:{{item.address}}(NO:{{item.cabinetNo}})</view>
+   <view class='err-box' wx:if="{{item.unusualStatus!=0}}">{{item.failType}}</view>
+   <view class='flex-box-end bor1'>
+      <view class='z-num'>共{{item.orderNum}}件<text>合计:￥{{item.totalPrice}}</text></view>
+   </view>
+      </button>
+  </form>
+   </view>
+   <view class='evaluation-box'>
+   <view class='evaluation' bindtap='Evaluation' data-id='{{item.id}}' wx:if="{{item.status==6}}">
+     评价
+   </view>
+   </view>
+  </view>
+  </block>
+  </view>
+  </view>
+</view>
+<view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>

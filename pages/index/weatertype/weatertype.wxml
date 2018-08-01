@@ -1,0 +1,25 @@
+<!--pages/index/weatertype/weatertype.wxml-->
+<view>
+ <view class='weatertype-box'>
+ <block wx:for="{{classificationdata}}" wx:key="{{item.id}}">
+  <view class='weatertype' bindtap='Tab' data-id='{{item.id}}' data-index='{{index}}' data-name='{{item.name}}'><text class="{{current==index?'active':''}}">{{item.name}}洗护</text></view>
+  </block>
+ </view>
+ <view class='weater-list-box'>
+ <block wx:for="{{classificationdetaildata}}">
+  <view class='weater-list'>
+   <image src='{{item.typeImg}}'></image>
+   <view class='name'>{{item.name}}</view>
+   <view class='price'>￥{{item.price}}</view>
+  </view>
+  </block>
+ </view>
+</view>
+<view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>

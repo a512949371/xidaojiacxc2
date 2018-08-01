@@ -1,0 +1,53 @@
+/* pages/my/myinfo/myinfo.wxss */
+.info-box{
+  border-top: 1px solid #f0f0f0;
+  padding: 30rpx 20rpx;
+}
+.info-box .name{
+  font-size: 28rpx;
+  color: #000
+}
+.info-box .status{
+  font-size: 28rpx;
+  color: #646464;
+  text-align: right;
+}
+.info-box .status textarea{
+  width: 500rpx;
+  text-align: left;
+  height: 80rpx;
+  line-height: 40rpx;
+}
+.flex-box-btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.flex-box{
+  display: flex;
+  align-items: center;
+}
+.flex-box-center{
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.add-info{
+  padding-right: 20rpx;
+}
+.btn{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+  text-align: center;
+  font-size: 32rpx;
+  background-color: #37d091;
+  color: #FFF;
+  margin-top: 80rpx;
+}
+.h20{
+  height: 40rpx;
+  width: 100%;
+  background-color: #f0f0f0;
+}

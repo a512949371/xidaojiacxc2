@@ -1,0 +1,550 @@
+<!--pages/orderlist/orderdetail/orderdetail.wxml-->
+  <!--已放件的洗护信息  -->
+  <view wx:if="{{orderstatus==1}}">
+ <view class='sata-box'><image src='../../../images/icon_liuc.png' mode="aspectFit"></image></view>
+ <view class='shopinfo-box'>
+   <view class='desc flex-box-center'>
+   <image src='../../../images/icon_8-1.png' style='width:28rpx;height:28rpx;'> </image>
+   <view style="padding-left:12rpx;">您的衣物已放件成功</view>
+  </view>  
+   <view class='shopinfo-desc'>
+  <view class='tit'>洗护信息</view>
+  <view class='z-number'>共{{orderdetaildata.orderClothes.totalNum}}件</view>
+  </view>
+  <view class='classification-box'>
+   <view class='img-list-box'>
+   <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}" wx:key="{{item.id}}">
+    <view class="img-list {{(index+1)%2==0?'pl20':''}}">
+    <view class='flex-box'>
+    <image class='img' src='{{item.typeImg}}'></image>
+    <view>     
+    <view class='type'>{{item.classTypeName}}</view>
+     <view class='number'>X{{item.clothesNum}}
+     <!-- <text class='pl10' wx:if="{{item.orderClothesListVoTwo.length>0}}">(<block wx:for="{{item.orderClothesListVoTwo}}"><text class='pd5'>{{item.classTypeName}}:{{item.clothesNum}}</text></block>)</text> -->
+     </view>
+     </view>
+    </view>
+    </view>
+    </block>
+  </view>
+  </view>
+  </view> 
+ <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>智能柜</view>
+  </view>
+  <view class='smart-ark-add-box'>
+  <view class='flex-box-btween pt12 pb12'>
+  <view class='smart-ark-add-name'>{{orderdetaildata.cabinetInfo.cabinetName}}({{orderdetaildata.cabinetInfo.cabinetNo}})</view>
+   <view class='add-btn'>
+    <view class='flex-box' bindtap='Gomap' data-latitude='{{orderdetaildata.cabinetInfo.latitude}}' data-longitude='{{orderdetaildata.cabinetInfo.longitude}}' data-cabinetName='{{orderdetaildata.cabinetInfo.cabinetName}}' data-address='{{orderdetaildata.cabinetInfo.address}}'>
+    <image src='../../../images/icon_add.png' style='width:32rpx;height:32rpx;'></image>
+    <view class=''>去这里</view>
+   </view>
+   </view>
+  </view>
+  <view class='smart-ark-add-desc'>{{orderdetaildata.cabinetInfo.address}} </view>
+  <view class='smart-ark-add'>
+   <view wx:for="{{orderdetaildata.cabinetInfo.orderBox}}">{{item.boxType}}NO.{{item.boxId}}</view>
+  </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+  <view class='h20'></view>
+  <view class='shopinfo-desc'>
+  <view class='tit'>订单信息</view>
+  </view>
+  <view class='shopinfo-order-box pb15'>
+   <view class='shopinfo-order'>订单编号：{{orderdetaildata.orderNo}}</view>
+   <view class='shopinfo-order'>下单时间：{{orderdetaildata.createTime}}</view>
+  </view>
+  </view>
+  <view class='flex-box'><view class='tip'>取消订单后，请点击“我要取衣”取走衣物</view></view>
+  <view class='cancel-order'><view class='cancel-btn' bindtap='Errordercancel' data-orderid='{{orderdetaildata.id}}'>取消订单</view></view>
+</view>  
+  <!--已放件的洗护信息  -->
+  <!--已送衣  -->
+  <view wx:if="{{orderstatus==2}}">
+ <view class='sata-box'><image src='../../../images/icon_liuc-1.png' mode="aspectFit"></image></view>
+ <view class='shopinfo-box'>
+   <view class='desc'>您的衣物已送往智能洗衣工厂</view> 
+   <view class='shopinfo-desc'>
+  <view class='tit'>洗护信息</view>
+  <view class='z-number'>共{{orderdetaildata.orderClothes.totalNum}}件</view>
+  </view>
+  <view class='classification-box'>
+   <view class='img-list-box'>
+   <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}" wx:key="{{item.id}}">
+    <view class="img-list {{(index+1)%2==0?'pl20':''}}">
+    <view class='flex-box'>
+    <image class='img' src='{{item.typeImg}}'></image>
+    <view>     
+    <view class='type'>{{item.classTypeName}}</view>
+     <view class='number'>X{{item.clothesNum}}
+     <text class='pl10' wx:if="{{item.orderClothesListVoTwo.length>0}}">(<block wx:for="{{item.orderClothesListVoTwo}}"><text class='pd5'>{{item.classTypeName}}:{{item.clothesNum}}</text></block>)</text>
+     </view>
+     </view>
+    </view>
+    </view>
+    </block>
+    </view>
+  </view>
+  </view> 
+ <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+ <view class='tit'>智能柜</view>
+  </view>
+  <view class='smart-ark-add-box'>
+  <view class='flex-box-btween pt12 pb12'>
+  <view class='smart-ark-add-name'>{{orderdetaildata.cabinetInfo.cabinetName}}({{orderdetaildata.cabinetInfo.cabinetNo}})</view>
+   <view class='add-btn'>
+    <view class='flex-box' bindtap='Gomap' data-latitude='{{orderdetaildata.cabinetInfo.latitude}}' data-longitude='{{orderdetaildata.cabinetInfo.longitude}}'>
+    <image src='../../../images/icon_add.png' style='width:32rpx;height:32rpx;'></image>
+    <view class=''>去这里</view>
+   </view>
+   </view>
+  </view>
+  <view class='smart-ark-add-desc'>{{orderdetaildata.cabinetInfo.address}} </view>
+  <view class='smart-ark-add'>
+   <view wx:for="{{orderdetaildata.cabinetInfo.orderBox}}">{{item.boxType}}NO.{{item.boxId}}</view>
+  </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+  <view class='h20'></view>
+  <view class='shopinfo-desc'>
+  <view class='tit'>订单信息</view>
+  </view>
+  <view class='shopinfo-order-box pb15'>
+   <view class='shopinfo-order'>订单编号：{{orderdetaildata.orderNo}}</view>
+   <view class='shopinfo-order'>下单时间：{{orderdetaildata.createTime}}</view>
+  </view>
+  </view>
+</view>
+  <!--已送衣  -->
+  <!--清洗中/送回中的洗护信息  -->
+   <view wx:if="{{orderstatus==3||orderstatus==4}}">
+  <view class='sata-box' wx:if="{{orderstatus==3}}"><image src='../../../images/icon_liuc-2.png' mode="aspectFit"></image></view>
+  <view class='sata-box' wx:if="{{orderstatus==4}}"><image src='../../../images/icon_liuc-3.png' mode="aspectFit"></image></view>
+  <view class='shopinfo-box'>
+  <view class='desc' wx:if="{{orderstatus==3}}">您的衣物正在清洗中</view>
+  <view class='desc' wx:if="{{orderstatus==4}}">您的衣物正在送回中</view>    
+  <view class='shopinfo-desc'>
+  <view class='tit'>洗护信息(共{{orderdetaildata.orderClothes.totalNum}}件)</view>
+  <view class='z-number flex-box' bindtap='Openxhdetail' wx:if="{{orderdetaildata.orderClothes.orderClothesVos.length>0}}">
+   <view>查看详情</view>
+   <image src='../../../images/icon_down.png' style='width:24rpx;height:15rpx;margin-left:12rpx; margin-top:6rpx;'></image>
+  </view>
+  </view>
+  <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}" wx:key="{{item.id}}">
+  <view class='shopdetail-box' wx:if="{{xhdetailtf}}">
+   <view class='shop-info'>
+   <view class='img'><image src='{{item.typeImg}}'></image></view>
+   <view class='name-box'>
+    <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+      <view class='parameter-box'>
+    <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
+   </view>
+   <view class='parameter-box'>
+   <view class='parameter-type'>物品瑕疵:{{item.defectDetail}}</view>
+   </view>
+   <view class='parameter-box'>
+    <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
+   </view>
+   </view>
+   <view class='price'>
+    <view>￥{{item.price}}</view>
+   </view>
+   </view>
+  </view>
+   </block>
+ </view>
+  <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>价格信息</view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>洗护总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.laundryPrice}}</view>
+   </view>
+   <view class='price pt20'>
+    <view class='price-type'>订单总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.totalPrice}}</view>
+   </view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>实付款:</view>
+    <view class='price-desc'>￥{{orderdetaildata.realPayPrice}}</view>
+   </view>
+  </view>
+  </view>
+   <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+ <view class='tit'>智能柜</view>
+  </view>
+  <view class='smart-ark-add-box'>
+  <view class='flex-box-btween pt12 pb12'>
+  <view class='smart-ark-add-name'>{{orderdetaildata.cabinetInfo.cabinetName}}({{orderdetaildata.cabinetInfo.cabinetNo}})</view>
+   <view class='add-btn'>
+    <view class='flex-box' bindtap='Gomap' data-latitude='{{orderdetaildata.cabinetInfo.latitude}}' data-longitude='{{orderdetaildata.cabinetInfo.longitude}}'>
+    <image src='../../../images/icon_add.png' style='width:32rpx;height:32rpx;'></image>
+    <view class=''>去这里</view>
+   </view>
+   </view>
+  </view>
+  <view class='smart-ark-add-desc'>{{orderdetaildata.cabinetInfo.address}} </view>
+  <view class='smart-ark-add'>
+   <view wx:for="{{orderdetaildata.cabinetInfo.orderBox}}">{{item.boxType}}NO.{{item.boxId}}</view>
+  </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+  <view class='h20'></view>
+  <view class='shopinfo-desc'>
+  <view class='tit'>订单信息</view>
+  </view>
+  <view class='shopinfo-order-box pb15'>
+   <view class='shopinfo-order'>订单编号：{{orderdetaildata.orderNo}}</view>
+   <view class='shopinfo-order'>下单时间：{{orderdetaildata.createTime}}</view>
+  </view>
+  </view>
+</view>  
+  <!--送洗中洗护信息结束  -->
+  <!--待取衣  -->
+     <view wx:if="{{orderstatus==5}}">
+  <view class='sata-box'><image src='../../../images/icon_liuc-4.png' mode="aspectFit"></image></view>
+ <view class='shopinfo-box'>
+  <view class='desc'>请到智能柜前取衣</view>
+  <view class='desc' style='margin-top:0;color:#f4433a;padding-top:0'>请在24小时内尽快取走衣物，否则收取储衣价</view>  
+  <view class='shopinfo-desc'>
+  <view class='tit'>洗护信息(共{{orderdetaildata.orderClothes.totalNum}}件)</view>
+  <view class='z-number flex-box' bindtap='Openxhdetail' wx:if="{{orderdetaildata.orderClothes.orderClothesVos.length>0}}">
+   <view>查看详情</view>
+   <image src='../../../images/icon_down.png' style='width:24rpx;height:15rpx;margin-left:12rpx; margin-top:6rpx;'></image>
+  </view>
+  </view>
+ <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}" wx:key="{{item.id}}">
+  <view class='shopdetail-box' wx:if="{{xhdetailtf}}">
+   <view class='shop-info'>
+   <view class='img'><image src='{{item.typeImg}}'></image></view>
+   <view class='name-box'>
+    <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+      <view class='parameter-box'>
+    <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
+   </view>
+   <view class='parameter-box'>
+   <view class='parameter-type'>物品瑕疵:{{item.defectDetail}}</view>
+   </view>
+   <view class='parameter-box'>
+    <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
+   </view>
+   </view>
+   <view class='price'>
+    <view>￥{{item.price}}</view>
+   </view>
+   </view>
+  </view>
+   </block>
+ </view>
+  <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>价格信息</view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>洗护总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.laundryPrice}}</view>
+   </view>
+   <view class='price pt15' wx:if="{{orderdetaildata.useBoxPrice>0}}">
+    <view class='price-type'>储衣价:<text class='pl10'>({{orderdetaildata.useBoxHour}})</text></view>
+    <view class='price-desc'>￥{{orderdetaildata.useBoxPrice}}</view>
+   </view>
+   <view class='price pt15' wx:if="{{orderdetaildata.couponPrice>0}}">
+    <view class='price-type'>优惠:</view>
+    <view class='price-desc'>-￥{{orderdetaildata.couponPrice}}</view>
+   </view>
+   <view class='price pt15'>
+    <view class='price-type'>订单总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.totalPrice}}</view>
+   </view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>实付款:</view>
+    <view class='price-desc'>￥{{orderdetaildata.realPayPrice}}</view>
+   </view>
+  </view>
+  </view> 
+   <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>智能柜</view>
+  </view>
+  <view class='smart-ark-add-box'>
+  <view class='flex-box-btween pt12 pb12'>
+  <view class='smart-ark-add-name'>{{orderdetaildata.cabinetInfo.cabinetName}}({{orderdetaildata.cabinetInfo.cabinetNo}})</view>
+   <view class='add-btn'>
+    <view class='flex-box' bindtap='Gomap' data-latitude='{{orderdetaildata.cabinetInfo.latitude}}' data-longitude='{{orderdetaildata.cabinetInfo.longitude}}'>
+    <image src='../../../images/icon_add.png' style='width:32rpx;height:32rpx;'></image>
+    <view class=''>去这里</view>
+   </view>
+   </view>
+  </view>
+  <view class='smart-ark-add-desc'>{{orderdetaildata.cabinetInfo.address}} </view>
+  <view class='smart-ark-add'>
+   <view wx:for="{{orderdetaildata.cabinetInfo.orderBox}}">{{item.boxType}}NO.{{item.boxId}}</view>
+  </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+  <view class='h20'></view>
+  <view class='shopinfo-desc'>
+  <view class='tit'>订单信息</view>
+  </view>
+  <view class='shopinfo-order-box pb15'>
+   <view class='shopinfo-order'>订单编号：{{orderdetaildata.orderNo}}</view>
+   <view class='shopinfo-order'>下单时间：{{orderdetaildata.createTime}}</view>
+  </view>
+  </view>
+</view> 
+  <!--待取衣  -->
+    <!--待评价  -->
+ <view wx:if="{{orderstatus==6}}">
+  <view class='sata-box'><image src='../../../images/icon_liuc-6.png' mode="aspectFit"></image></view>
+ <view class='shopinfo-box'>
+  <view class='desc'>等待您的评价</view> 
+  <view class='shopinfo-desc'>
+  <view class='tit'>洗护信息(共{{orderdetaildata.orderClothes.totalNum}}件)</view>
+  <view class='z-number flex-box' bindtap='Openxhdetail' wx:if="{{orderdetaildata.orderClothes.orderClothesVos.length>0}}">
+   <view>查看详情</view>
+   <image src='../../../images/icon_down.png' style='width:24rpx;height:15rpx;margin-left:12rpx; margin-top:6rpx;'></image>
+  </view>
+  </view>
+ <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}" wx:key="{{item.id}}">
+  <view class='shopdetail-box' wx:if="{{xhdetailtf}}">
+   <view class='shop-info'>
+   <view class='img'><image src='{{item.typeImg}}'></image></view>
+   <view class='name-box'>
+    <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+      <view class='parameter-box'>
+    <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
+   </view>
+   <view class='parameter-box'>
+   <view class='parameter-type'>物品瑕疵:{{item.defectDetail}}</view>
+   </view>
+   <view class='parameter-box'>
+    <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
+   </view>
+   </view>
+   <view class='price'>
+    <view>￥{{item.price}}</view>
+   </view>
+   </view>
+  </view>
+   </block>
+ </view>
+  <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>价格信息</view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>洗护总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.laundryPrice}}</view>
+   </view>
+   <view class='price pt15' wx:if="{{orderdetaildata.useBoxPrice>0}}">
+    <view class='price-type'>储衣价:<text class='pl10'>({{orderdetaildata.useBoxHour}})</text></view>
+    <view class='price-desc'>￥{{orderdetaildata.useBoxPrice}}</view>
+   </view>
+   <view class='price pt15' wx:if="{{orderdetaildata.couponPrice>0}}">
+    <view class='price-type'>优惠:</view>
+    <view class='price-desc'>-￥{{orderdetaildata.couponPrice}}</view>
+   </view>
+   <view class='price pt15'>
+    <view class='price-type'>订单总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.totalPrice}}</view>
+   </view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>实付款:</view>
+    <view class='price-desc'>￥{{orderdetaildata.realPayPrice}}</view>
+   </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+   <view class='h20'></view>
+   <view class='evaluate-box flex-box-end'>
+    <view class='evaluate' bindtap='Evaluation' data-id='{{orderdetaildata.id}}'>评价</view>
+   </view>
+   </view>
+   <view class='shopinfo-box'>
+   <view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>智能柜</view>
+  </view>
+  <view class='smart-ark-add-box'>
+  <view class='flex-box-btween pt12 pb12'>
+  <view class='smart-ark-add-name'>{{orderdetaildata.cabinetInfo.cabinetName}}({{orderdetaildata.cabinetInfo.cabinetNo}})</view>
+   <view class='add-btn'>
+    <view class='flex-box' bindtap='Gomap' data-latitude='{{orderdetaildata.cabinetInfo.latitude}}' data-longitude='{{orderdetaildata.cabinetInfo.longitude}}'>
+    <image src='../../../images/icon_add.png' style='width:32rpx;height:32rpx;'></image>
+    <view class=''>去这里</view>
+   </view>
+   </view>
+  </view>
+  <view class='smart-ark-add-desc'>{{orderdetaildata.cabinetInfo.address}} </view>
+  <view class='smart-ark-add'>
+   <view wx:for="{{orderdetaildata.cabinetInfo.orderBox}}">{{item.boxType}}NO.{{item.boxId}}</view>
+  </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+  <view class='h20'></view>
+  <view class='shopinfo-desc'>
+  <view class='tit'>订单信息</view>
+  </view>
+  <view class='shopinfo-order-box pb15'>
+   <view class='shopinfo-order'>订单编号：{{orderdetaildata.orderNo}}</view>
+   <view class='shopinfo-order'>取衣时间：{{orderdetaildata.pickupTime}}</view>
+   <view class='shopinfo-order'>下单时间：{{orderdetaildata.createTime}}</view>
+  </view>
+  </view>
+    <view wx:if="{{orderdetaildata.isDisplay==1}}">
+    <view class='flex-box'><view class='waring'>取走衣物后如果您有特殊情况需要紧急开柜，请点击申请</view></view>
+    <view class='cancel-order'><view class="emergency-btn {{clicktf?'':'blue'}}" bindtap='openask' data-isplay='{{orderdetaildata.isDisplay}}'>紧急开柜申请         </view></view>
+  </view>
+</view> 
+  <!--待评价  -->
+  <!--已取衣  -->
+<view wx:if="{{orderstatus==7}}">
+  <view class='sata-box'><image src='../../../images/icon_liuc-6.png' mode="aspectFit"></image></view>
+ <view class='shopinfo-box'>
+  <view class='desc'>您的订单已完成</view> 
+  <!-- <view class='desc' style='margin-top:0;color:#f4433a;padding-top:0'>请在24小时内尽快取走衣物，否则收取储衣价</view>  -->
+  <view class='shopinfo-desc'>
+  <view class='tit'>洗护信息(共{{orderdetaildata.orderClothes.totalNum}}件)</view>
+  <view class='z-number flex-box' bindtap='Openxhdetail' wx:if="{{orderdetaildata.orderClothes.orderClothesVos.length>0}}">
+   <view>查看详情</view>
+   <image src='../../../images/icon_down.png' style='width:24rpx;height:15rpx;margin-left:12rpx; margin-top:6rpx;'></image>
+  </view>
+  </view>
+ <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}" wx:key="{{item.id}}">
+  <view class='shopdetail-box' wx:if="{{xhdetailtf}}">
+   <view class='shop-info'>
+   <view class='img'><image src='{{item.typeImg}}'></image></view>
+   <view class='name-box'>
+    <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+      <view class='parameter-box'>
+    <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
+   </view>
+   <view class='parameter-box'>
+   <view class='parameter-type'>物品瑕疵:{{item.defectDetail}}</view>
+   </view>
+   <view class='parameter-box'>
+    <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
+   </view>
+   </view>
+   <view class='price'>
+    <view>￥{{item.price}}</view>
+   </view>
+   </view>
+  </view>
+   </block>
+ </view>
+  <view class='shopinfo-box'>
+<view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>价格信息</view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>洗护总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.laundryPrice}}</view>
+   </view>
+   <view class='price pt15' wx:if="{{orderdetaildata.useBoxPrice>0}}">
+    <view class='price-type'>储衣价:<text class='pl10'>({{orderdetaildata.useBoxHour}})</text></view>
+    <view class='price-desc'>￥{{orderdetaildata.useBoxPrice}}</view>
+   </view>
+   <view class='price pt15' wx:if="{{orderdetaildata.couponPrice>0}}">
+    <view class='price-type'>优惠:</view>
+    <view class='price-desc'>-￥{{orderdetaildata.couponPrice}}</view>
+   </view>
+   <view class='price pt15'>
+    <view class='price-type'>订单总价:</view>
+    <view class='price-desc'>￥{{orderdetaildata.totalPrice}}</view>
+   </view>
+  </view>
+  <view class='price-box'>
+   <view class='price'>
+    <view class='price-type'>实付款:</view>
+    <view class='price-desc'>￥{{orderdetaildata.realPayPrice}}</view>
+   </view>
+  </view>
+  </view>
+   <view class='shopinfo-box'>
+   <view class='h20'></view>
+ <view class='shopinfo-desc'>
+  <view class='tit'>智能柜</view>
+  </view>
+  <view class='smart-ark-add-box'>
+  <view class='flex-box-btween pt12 pb12'>
+  <view class='smart-ark-add-name'>{{orderdetaildata.cabinetInfo.cabinetName}}({{orderdetaildata.cabinetInfo.cabinetNo}})</view>
+   <view class='add-btn'>
+    <view class='flex-box' bindtap='Gomap' data-latitude='{{orderdetaildata.cabinetInfo.latitude}}' data-longitude='{{orderdetaildata.cabinetInfo.longitude}}'>
+    <image src='../../../images/icon_add.png' style='width:32rpx;height:32rpx;'></image>
+    <view class=''>去这里</view>
+   </view>
+   </view>
+  </view>
+  <view class='smart-ark-add-desc'>{{orderdetaildata.cabinetInfo.address}} </view>
+  <view class='smart-ark-add'>
+   <view wx:for="{{orderdetaildata.cabinetInfo.orderBox}}">{{item.boxType}}NO.{{item.boxId}}</view>
+  </view>
+  </view>
+  </view>
+  <view class='shopinfo-box'>
+  <view class='h20'></view>
+  <view class='shopinfo-desc'>
+  <view class='tit'>订单信息</view>
+  </view>
+  <view class='shopinfo-order-box pb15'>
+   <view class='shopinfo-order'>订单编号：{{orderdetaildata.orderNo}}</view>
+   <view class='shopinfo-order'>取衣时间：{{orderdetaildata.pickupTime}}</view>
+   <view class='shopinfo-order'>下单时间：{{orderdetaildata.createTime}}</view>
+  </view>
+  </view>
+  <view wx:if="{{orderdetaildata.isDisplay==1}}">
+    <view class='flex-box'><view class='waring'>取走衣物后如果您有特殊情况需要紧急开柜，请点击申请</view></view>
+    <view class='cancel-order'><view class="emergency-btn {{clicktf?'':'blue'}}" bindtap='openask' data-isplay='{{orderdetaildata.isDisplay}}'>紧急开柜申请         </view></view>
+  </view>
+</view> 
+  <!--已取衣  -->
+    <!--紧急开柜弹窗-->
+  <view class='alert-box' wx:if="{{alerttf}}">
+   <view class='shaw'></view>
+   <view class='content-box'>
+    <view class='tit'>请输入紧急开柜原因</view>
+    <textarea placeholder='紧急开柜原因' placeholder-style="color:#c8c8c8" bindinput='Inputtext' maxlength='300'></textarea>
+    <view class='btn-box'>
+     <view class='btn' bindtap='Emergencyask'>确定申请</view>
+     </view>
+   </view>
+  </view>
+  <!--紧急开柜弹窗-->
+  <view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>

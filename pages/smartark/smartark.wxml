@@ -1,0 +1,23 @@
+<!--pages/smartark/smartark.wxml-->
+<view>
+ <view class='smartark-list'>
+  <block wx:for="{{amartaskdata}}" wx:key="{{index}}">
+  <view class='smartark-box'>
+   <view class='smartark-name'>
+    <view class='left'>{{item.name}}</view>
+    <view class='right'>{{'<'+item.distance+'km'}}</view>
+   </view>
+   <view  class='smartark-desc'>{{item.address}}</view>
+   <view class='number-box'>
+    <view class='number'>NO:{{item.cabinetNo}}</view>
+    <view class='add-box'>
+     <view class='flex-box'>
+      <image src='../../images/icon_add.png'></image>
+      <view bindtap='Gohere' data-longitude='{{item.longitude}}' data-latitude='{{item.latitude}}' data-name='{{item.name}}' data-address='{{item.address}}'>去这里</view>
+     </view>
+    </view>
+   </view>
+  </view>
+  </block>
+ </view>
+</view>

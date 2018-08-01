@@ -1,0 +1,40 @@
+<!--pages/orderlist/evaluation/evaluation.wxml-->
+<view>
+<view class='star-box'>
+<view class='star-one'>总体服务评分:</view>
+  <text class="star-desc">{{starMap[star-1]}}</text>
+</view>
+ <!--★-->
+<view class='star-box' style='padding-top:0'>
+  <view class="star-img">
+   <view class='flex-box-center'>
+    <block wx:for="{{starMap}}">
+      <view wx:if="{{star>=index+1}}" style="padding-right: .5em" class="red " bindtap="myStarChoose" data-star="{{index+1}}">
+        <image src='../../../images/icon_star1.png' style='width:41rpx;height:41rpx'></image>
+      </view>
+      <view wx:else style="padding-right: .5em" class="dark" bindtap="myStarChoose" data-star="{{index+1}}"><image src='../../../images/icon_star.png' style='width:41rpx;height:41rpx'></image></view>
+    </block>
+    </view>
+  </view>
+</view>
+ <view class='evaluation-box'>
+  <view class='evaluation-tit'>请选择您对本次洗护订单的服务印象</view>
+  <view class='label-box'>
+   <block wx:for="{{labeldata}}">
+    <view class="label {{item.type==2?'active':''}}" bindtap='Label' data-index='{{index}}'>{{item.desc}}</view>
+    </block>
+  </view>
+ </view>
+ <view class='evaluation-box' style='padding-top:28rpx'>
+ <view class='said'>
+  <view class='textare-box'>
+  <textarea placeholder='说说您对洗衣过程的反馈或意见' maxlength="300" value='{{textare}}' bindinput='Textare'></textarea>
+  </view> 
+ </view> 
+ </view>
+ <view class='evaluation-box'>
+  <view class='btn-box'>
+  <view class='btn' bindtap='Seteva'>提交</view>
+  </view>
+ </view>
+</view>

@@ -1,0 +1,42 @@
+<!--pages/my/myinfo/myinfo.wxml-->
+<view>
+ <view class='info-box flex-box-btn'>
+  <view class='name'>手机号码</view>
+  <view class='status'>
+   <view class='status'>
+   {{userData.phone}}
+  </view>
+  </view>
+ </view>
+ <view class='info-box flex-box-btn'>
+  <view class='name'>姓名</view>
+  <view class='status'>
+   <input value='{{userData.name}}' placeholder='' type='text' bindinput='Input' data-num='1'></input>
+  </view>
+ </view>
+ <view class='h20'></view>
+  <view class='info-box flex-box-btn'>
+  <view class='name'>所在地区</view>
+  <view class='status'>
+  <view class='flex-box'>
+  <view class='add-info'>
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}" >
+    <view class="picker">
+      {{region[0]}}{{region[1]}}{{region[2]}}
+    </view>
+  </picker></view>
+  <image src='../../../images/icon_left.png' style='width:13rpx;height:22rpx;'></image>
+  </view>
+  </view>
+ </view>
+  <view class='info-box flex-box-btn'>
+  <view class='name'>详细地址</view>
+  <view class='status'>
+   <textarea maxlength='120'  placeholder='请输入详细地址信息，如道路，门牌号，小区，楼栋号，单元室等' value="{{userData.address}}"   bindinput='Input' data-num='2'></textarea>
+  </view>
+ </view>
+ <view class='h20'></view>
+ <view class='btn-box flex-box-center'>
+  <view class='btn' bindtap='Saveinfo'>确认提交</view>
+ </view>
+</view>

@@ -1,0 +1,102 @@
+/* pages/index/weatertype/weatertype.wxss */
+.weatertype-box{
+  
+  display: flex;
+  align-items: center
+}
+.weatertype{
+  width: 25%;
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #969696;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 30rpx 0;
+
+}
+.weatertype .active{
+  padding-bottom: 22rpx;
+  border-bottom: 8rpx solid #6d83f0;
+  color: #000;
+  font-size: 32rpx;
+}
+.weater-list-box{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap
+}
+.weater-list{
+  width: 33.3%;
+  border-bottom: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  margin-right: -1px;
+  text-align: center;
+  padding-top: 32rpx;
+  padding-bottom: 32rpx;
+}
+.weater-list image{
+  width: 146rpx;
+  height: 146rpx;
+  display: inline-block
+}
+.weater-list .name{
+  text-align: center;
+  font-size: 32rpx;
+  padding: 28rpx 0;
+}
+.weater-list .desc{
+  font-size: 24rpx;
+  color: #969696;
+  padding-left: 10rpx;
+}
+.weater-list .price{
+  font-size: 36rpx;
+  color: #f33a00
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99
+}
+.fixed .shaw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .content{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 50px);
+  left:calc(50% - 50px);
+  z-index: 101;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .text-box{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 30px);
+  left:calc(50% - 50px);
+  z-index: 101;
+  text-align: center;
+}
+.fixed .text-box image{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.fixed .text-box .desc{
+  font-size: 28rpx;
+  color: #FFF;
+}

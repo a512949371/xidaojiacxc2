@@ -1,0 +1,241 @@
+/* pages/orderlist/orderlist.wxss */
+.bge5{
+  background-color: #e5e5e5;
+}
+.topnav{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #FFF;
+
+}
+.nav-item{
+  flex: 1;
+  font-size: 32rpx;
+  color: #999;
+  height: 58rpx;
+}
+.nav-item text{
+  padding-bottom: 8rpx;
+  border-bottom:8rpx solid #FFF;
+}
+.nav-item text.active{
+  color: #000;
+  font-weight: bold;
+  border-bottom-color: #6d83f0
+}
+.list-box{
+  width: 100%;
+  box-sizing: border-box;
+}
+.list-box .list{
+  padding: 38rpx;
+  margin-top: 20rpx;
+  background-color: #FFF;
+}
+.list-box .list-order{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 30rpx;
+  color: #141414
+}
+.list-box .list-order .stat-box{
+  color: #F4433a;
+  font-size: 28rpx;
+}
+.img-list-box{
+  width: 100%;
+  padding-bottom: 20rpx;
+  display: flex;
+}
+.img-list-box .img-list{
+  padding-top: 30rpx;
+}
+.flex-box{
+  display: flex;
+  align-items: center;
+}
+.flex-box-btween{
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.flex-box-end{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end
+}
+.img-list-box .img-list .img{
+  width: 66rpx;
+  height: 57rpx;
+}
+.img-list-box .img-list .type{
+  flex: 1;
+  padding-left: 20rpx;
+  font-size:26rpx;
+  color: #646464
+}
+.img-list-box .img-list .number{
+  color: #000;
+  font-size:30rpx;
+  padding-left: 20rpx;
+}
+.img-list-box .img-list .number text{
+  font-size: 26rpx;
+  color: #969696
+}
+.pl10{
+  padding-left: 20rpx;
+}
+.pl20{
+  padding-left: 40rpx;
+}
+.pl40{
+  padding-left: 80rpx;
+}
+.pd5{
+  padding: 0 6rpx;
+}
+.list .desc{
+  font-size: 28rpx;
+  color: #666;
+  padding-bottom: 15rpx;
+  text-align: left;
+}
+.store-price{
+  color: #000;
+  font-size: 28rpx;
+  font-weight: bold;
+  padding: 15rpx 0;
+}
+.bor1{
+    border-top: 1px solid #ccc
+}
+.err-box{
+  font-size: 24rpx;
+  padding-bottom: 26rpx;
+  text-align: left;
+  color: #F4433a;
+}
+.store-price text{
+  color: #969696;
+  font-size: 26rpx;
+  padding-left: 10rpx;
+}
+.z-num{
+  text-align: right;
+  font-size: 28rpx;
+  padding: 15rpx 0;
+  color: #000;
+  font-weight: bold
+}
+.z-num text{
+  padding-left: 10rpx;
+}
+.evaluation-box{
+  padding: 10rpx 0 0 0;
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: flex-end
+}
+.evaluation-box .evaluation{
+  font-size: 26rpx;
+  line-height: 64rpx;
+  text-align: center;
+  width: 136rpx;
+  height: 64rpx;
+  border-radius: 64rpx;
+  border: 1px solid #646464;
+  color: #646464
+}
+.submit-box{
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 99;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  line-height: normal
+}
+button::after{
+  border: none
+}
+.order-list{
+  position: absolute;
+  top: 40rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFF
+}
+.order-list .img-box{
+  margin: 168rpx auto 74rpx auto;
+  justify-content: center
+}
+.order-list .img-box image{
+  width: 236rpx;
+  height: 201rpx;
+}
+.order-list .desc{
+  color: #969696;
+  font-size: 30rpx;
+  text-align: center;
+  padding: 10rpx 0
+}
+.order-list .btn{
+  width: 629rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 36rpx;
+  text-align: center;
+  color: #FFF;
+  background-color: rgba(55, 208, 145, 1);
+  border-radius: 10rpx;
+  margin: 100rpx auto 0 auto
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99
+}
+.fixed .shaw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .content{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 50px);
+  left:calc(50% - 50px);
+  z-index: 101;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .text-box{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 30px);
+  left:calc(50% - 50px);
+  z-index: 101;
+  text-align: center;
+}
+.fixed .text-box image{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.fixed .text-box .desc{
+  font-size: 28rpx;
+  color: #FFF;
+}

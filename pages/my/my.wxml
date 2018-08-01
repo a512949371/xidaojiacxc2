@@ -1,0 +1,34 @@
+<!--pages/my/my.wxml-->
+<view>
+ <view class='info-box'>
+  <view class='img'><image src='{{headpic}}'></image></view>
+  <view class='flex-box'>
+  <view class='nick'>{{nick}}</view>
+  <view class='login-box' bindtap='Login' wx:if="{{isLogin==0}}">登录</view>
+  </view> 
+ </view>
+ <view class='user-list-box'>
+  <view bindtap='Gomyinfo'>
+   <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+  <view class='user-list'  >
+   <image src='../../images/icon_info.png' class='img'></image>
+   <view class='desc'>我的资料</view>
+   <image src='../../images/icon_left.png' class='left'></image>
+  </view>
+     </button>
+  </form>
+  </view>
+  <view bindtap='Gophone'>
+  <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+  <view class='user-list mt22' >
+   <image src='../../images/icon_phone.png' class='img'></image>
+   <view class='desc'>联系我们</view>
+   <image src='../../images/icon_left.png' class='left'></image>
+  </view>
+   </button>
+  </form>
+  </view>
+ </view>
+</view>

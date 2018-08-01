@@ -1,0 +1,142 @@
+/* pages/login/login.wxss */
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 96rpx;
+}
+
+.userinfo-avatar {
+  width: 315rpx;
+  height: 137rpx;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+.btn-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.close-city{
+  color: #666
+}
+.true-city{
+  color:green
+}
+.mt10{
+  margin-top: 20rpx
+}
+.mt20{
+    margin-top: 40rpx;
+}
+.mt40{
+    margin-top: 80rpx;
+}
+.mt60{
+    margin-top:120rpx;
+}
+/* 登录页面 */
+.register-box{
+    padding-left:15px ;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+.register-box .desc{
+  font-size: 28rpx;
+  color: #969696;
+}
+.input-box{
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 4rpx 0;
+  display: flex;
+  align-items:center;
+  position: relative
+}
+.left{
+  width: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.left image{
+  width: 40rpx;
+  height: 48rpx
+} 
+.right{
+  flex:1;
+  padding: 5px 0;
+  box-sizing: border-box;
+        }
+input{
+    border: none;
+    line-height: 18px;
+    width: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    
+}
+
+input:focus{
+    outline: none;
+}
+.clearphone{
+ position: absolute;
+ top: 14rpx;
+ right: 20rpx;
+ color: #666;
+ z-index: 999
+}
+.phone{
+    width: 174rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    background-color: #dcdcdc;
+    border-radius:15px;
+    color: #b4b4b4;
+    margin-right: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+.rule-box{
+  text-align: center;
+  display: flex;
+  font-size: 32rpx;
+  align-items: center;
+  padding-bottom: 20rpx;
+  justify-content: center
+}
+.check-btn{
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 20rpx;
+  margin-top: -8rpx;
+}
+.check-btn image{
+  width: 28rpx;
+  height: 28rpx;
+}
+.rules{
+  color:#2682ff;
+}
+.img{
+  width: 80%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #999;
+  display:block;
+  color: #fff;
+  border-radius: 20rpx;
+  text-align: center;
+  margin: auto
+}
+.sky{
+  background-color:#6d83f0;
+  color: #FFF
+}
