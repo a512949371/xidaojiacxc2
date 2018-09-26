@@ -36,6 +36,7 @@
 .shopinfo-desc .tit{
   color: #000;
   font-size: 28rpx;
+  font-weight: bold;
 }
 .img-list-box{
   width: 100%;
@@ -189,6 +190,9 @@
 .pl10{
   padding-left: 20rpx;
 }
+.mb20{
+  margin-bottom: 20rpx;
+}
 .err-processing-box{
   border-top: 1px solid #f0f0f0;
   padding: 0 20rpx;
@@ -316,6 +320,7 @@
 .shop-info .name-box .name{
   font-size: 28rpx;
   color: #000;
+  font-weight: bold;
 }
 .shop-info  .price{
   text-align: right;
@@ -332,14 +337,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10rpx;
+  padding-top: 6rpx;
 }
 .parameter-type{
   font-size: 24rpx;
   color: #646464
 }
 .price-box{
-  border-top: 1px solid #999;
+  border-top: 1px solid #e5e5e5;
   padding: 30rpx 20rpx;
 }
 .price-box .price{
@@ -521,4 +526,13 @@
 .fixed .text-box .desc{
   font-size: 28rpx;
   color: #FFF;
+}
+.fixed-home{
+  position: fixed;
+  bottom: 200rpx;
+  right: 30rpx;
+}
+.fixed-home image{
+  width: 122rpx;
+  height: 122rpx;
 }

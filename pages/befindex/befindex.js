@@ -14,8 +14,11 @@ Page({
     key:'',
     cabinetId:'',
     type:'',
-    id:'',
-    formId:''
+    oneid:'',
+    formId:'',
+    fixedTF:false,
+    tiptext:'',
+    showmodelTF:false
   },
 
   /**
@@ -24,11 +27,12 @@ Page({
   onLoad: function (options) {
     var that=this;
     // 查看是否授权
+    console.log("app",app.smartdata)
     if (JSON.stringify(app.smartdata) != "{}"){
       this.setData({
         cabinetId: decodeURIComponent(app.smartdata.scene).split("&")[0].split("=")[1],
         type: decodeURIComponent(app.smartdata.scene).split("&")[1].split("=")[1],
-        id: decodeURIComponent(app.smartdata.scene).split("&")[2].split("=")[1],        
+        oneid: decodeURIComponent(app.smartdata.scene).split("&")[2].split("=")[1],        
       })
     }
     wx.getSetting({
@@ -101,13 +105,16 @@ Page({
   
   },
   bindGetUserInfo: function (e) {
-    console.log("e",e)
+    console.log("e",e);
+    this.setData({
+      fixedTF:true
+    })
     var that=this;
     var userData = JSON.parse(e.detail.rawData)
     var logindata={
       cabinetNo: this.data.cabinetId,
       type: this.data.type,
-      id:this.data.id
+      id: this.data.oneid
     }
     console.log(userData)
     wx.setStorage({
@@ -129,24 +136,48 @@ Page({
       })
       Request.Viplogin(logindata, function (res) {
         console.log("Viplogin", res)
+        that.setData({
+          fixedTF:false
+        })
         if (res.data.isOK) {
           that.setData({
-            key: res.data.data.commandKey
+            key: res.data.data.commandKey,
+            fixedTF:true
           })
           setInterval(function () {
             if (that.data.truelogin && that.data.truetime < 60) {
               that.data.truetime++;
               Request.Usertruelogin(that.data.key, function (res) {
                 console.log("Usertruelogin", res)
+                that.setData({
+                  fixedTF:false
+                })
                 if (res.data.data.status == 1) {
-                  wx.switchTab({
-                    url: '../index/index'
+                  if(that.data.type=='552'){
+                    that.setData({
+                      tiptext:'请在智能柜大屏幕上选择您要洗的衣物及数量',
+                      showmodelTF:true,
+                    })
+                  } 
+                  if (that.data.type == '562'){
+                    that.setData({
+                      tiptext: '请在智能柜大屏幕上点击“我要取衣”，支付后即可开柜取走衣物',
+                      showmodelTF:true,
+                    })
+                  }
+                  that.setData({
+                    truelogin: false
+                  })
+                }else  if (res.data.data.status == -1) {
+                  wx.showToast({
+                    title: res.data.data.error,
+                    icon: 'none',
+                    duration: 2000
                   })
                   that.setData({
                     truelogin: false
                   })
-                }
-                if (res.data.data.status == -1) {
+                }else{
                   wx.showToast({
                     title: res.data.data.error,
                     icon: 'none',
@@ -157,12 +188,29 @@ Page({
                   })
                 }
               })
+            }else{
+              that.setData({
+                fixedTF:false
+              })
             }
           }, 2000)
 
+        }else{
+          if (res.statusCode == 405){
+            wx.removeStorageSync('token');
+            wx.navigateTo({
+              url: '../login/login',
+            })
+          }else{
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none'
+            })
+          }
+          
         }
       })
-    },2000)
+    },1000)
 
     
   },
@@ -170,6 +218,14 @@ Page({
     console.log('form发生了submit事件，携带数据为：', e)
     this.setData({
       formId: e.detail.formId
+    })
+  },
+  Goindex(){
+    this.setData({
+      showmodelTF:false
+    })
+    wx.switchTab({
+      url: '../index/index'
     })
   }
 })

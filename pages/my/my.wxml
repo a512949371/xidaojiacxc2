@@ -2,13 +2,64 @@
 <view>
  <view class='info-box'>
   <view class='img'><image src='{{headpic}}'></image></view>
-  <view class='flex-box'>
+  <view class='flex-box-center pt50'>
   <view class='nick'>{{nick}}</view>
   <view class='login-box' bindtap='Login' wx:if="{{isLogin==0}}">登录</view>
   </view> 
  </view>
+ <view class='flex-box-center'>
+  <view class='pay-box'>
+   <view class='flex-box'>
+    <view class='box'>
+    <view class='important'>{{moneydata.allmoney||0}}</view>
+    <view class='desc'>当前总余额</view>
+    </view>
+    <view class='box bor-left'>
+    <view class='important'>{{moneydata.giftmoney||0}}</view>
+    <view class='desc'>赠送余额</view>
+    </view>
+    <view class='box bor-left'>
+    <view class='important'>{{moneydata.couponNum||0}}</view>
+    <view class='desc'>优惠券</view>
+    </view>
+   </view>
+  </view>
+ </view>
  <view class='user-list-box'>
-  <view bindtap='Gomyinfo'>
+ <view bindtap='Gomyinfo' data-num='0' class='pt30'>
+   <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+  <view class='user-list '  >
+   <image src='../../images/icon_reward.png' class='img'></image>
+   <view class='desc'>充值有礼</view>
+   <image src='../../images/icon_left.png' class='left'></image>
+  </view>
+     </button>
+  </form>
+  </view>
+  <view bindtap='Gomyinfo' data-num='1'>
+   <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+  <view class='user-list'  >
+   <image src='../../images/icon_pay.png' class='img'></image>
+   <view class='desc'>充值记录</view>
+   <image src='../../images/icon_left.png' class='left'></image>
+  </view>
+     </button>
+  </form>
+  </view>
+  <view bindtap='Gomyinfo' data-num='2'>
+   <form bindsubmit='formSubmit' report-submit="true">
+    <button formType="submit" class='submit-box' >
+  <view class='user-list'  >
+   <image src='../../images/icon_consumption.png' class='img'></image>
+   <view class='desc'>消费记录</view>
+   <image src='../../images/icon_left.png' class='left'></image>
+  </view>
+     </button>
+  </form>
+  </view>
+  <view bindtap='Gomyinfo' data-num='3'>
    <form bindsubmit='formSubmit' report-submit="true">
     <button formType="submit" class='submit-box' >
   <view class='user-list'  >
@@ -22,7 +73,7 @@
   <view bindtap='Gophone'>
   <form bindsubmit='formSubmit' report-submit="true">
     <button formType="submit" class='submit-box' >
-  <view class='user-list mt22' >
+  <view class='user-list' style='border:none'>
    <image src='../../images/icon_phone.png' class='img'></image>
    <view class='desc'>联系我们</view>
    <image src='../../images/icon_left.png' class='left'></image>

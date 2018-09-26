@@ -36,6 +36,7 @@
 .shopinfo-desc .tit{
   color: #000;
   font-size: 28rpx;
+  font-weight: bold
 }
 .img-list-box{
   width: 100%;
@@ -514,4 +515,13 @@
 .fixed .text-box .desc{
   font-size: 28rpx;
   color: #FFF;
+}
+.fixed-home{
+  position: fixed;
+  bottom: 200rpx;
+  right: 30rpx;
+}
+.fixed-home image{
+  width: 122rpx;
+  height: 122rpx;
 }

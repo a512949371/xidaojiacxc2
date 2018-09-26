@@ -35,19 +35,19 @@
 <view class='mb10'>
 <view class='tit'>高端服务品质</view>
 <view class='service-box'>
- <view class='service'>
+ <view class='service' bindtap='Gopinzhi' data-num='0'>
  <image src='../../images/icon_1.png'></image>
  <view class='service-tit'>下单流程</view>
  </view>
- <view class='service'>
+ <view class='service' bindtap='Gopinzhi' data-num='1'>
  <image src='../../images/icon_2.png'></image>
  <view class='service-tit'>洗护流程</view>
  </view>
- <view class='service'>
+ <view class='service' bindtap='Gopinzhi' data-num='2' data-id="{{classificationdata[0].id}}" data-name="{{classificationdata[0].name}}" data-index="{{0}}">
  <image src='../../images/icon_3.png'></image>
  <view class='service-tit'>服务价格</view>
  </view>
- <view class='service'>
+ <view class='service' bindtap='Gopinzhi' data-num='3'>
  <image src='../../images/icon_4.png'></image>
  <view class='service-tit'>服务范围</view>
  </view>

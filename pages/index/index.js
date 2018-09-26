@@ -7,10 +7,12 @@ Page({
    */
   data: {
     imgUrls: [
-      '../../images/pic.png',
+      'http://p7grh1j0l.bkt.clouddn.com/sale.png',
+      'http://p7grh1j0l.bkt.clouddn.com/rechargeable.png',
+      'http://p7grh1j0l.bkt.clouddn.com/register.png'
     ],
     indicatorDots: true,
-    autoplay: false,
+    autoplay: true,
     interval: 5000,
     duration: 1000,
     circular:true,
@@ -24,6 +26,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userLocation']) {
+          wx.getLocation({
+            type: 'gcj02',
+            success: function (res) {
+              var latitude = res.latitude
+              var longitude = res.longitude
+              var speed = res.speed
+              var accuracy = res.accuracy
+              console.log("getLocation", res)
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '为了更好的体验，此应用需要获取您的地理位置,是否允许？',
+            cancelText:'不允许',
+            confirmText:'允许',
+            success: function (res) {
+              if (res.confirm) {
+                wx.getLocation({
+                  type: 'gcj02',
+                  success: function (res) {
+                    var latitude = res.latitude
+                    var longitude = res.longitude
+                    var speed = res.speed
+                    var accuracy = res.accuracy
+                    console.log("getLocation", res)
+                  },
+                  fail: function (res) {
+                    wx.showToast({
+                      title: '请允许微信访问位置服务，以便为您找到附近的智能洗衣柜',
+                      icon: "none"
+                    })
+                  }
+                })
+              }
+            }
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -38,6 +83,7 @@ Page({
    */
   onShow: function () {
     var that = this;
+    console.log(20 === (10, 20))
     Request.Getclassification('', function (res) {
       console.log("Getclassification", res)
       that.setData({
@@ -72,8 +118,7 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-    
+  onHide: function () { 
   },
 
   /**
@@ -100,16 +145,16 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
   },
   //跳转洗护分类
   Go(e){
     wx.navigateTo({
-      url: '../index/weatertype/weatertype?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name + '&index=' + e.currentTarget.dataset.index,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      url: '../index/weatertype/weatertype?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name + '&index=' + e.currentTarget.dataset.index
     })
   },
   //跳转智能柜列表
@@ -117,6 +162,7 @@ Page({
     wx.getSetting({
       success: function (res) {
       if (res.authSetting['scope.userLocation']) {
+        console.log("chengg")
         wx.getLocation({
           type: 'gcj02',
           success: function (res) {
@@ -130,6 +176,12 @@ Page({
               success: function (res) { },
               fail: function (res) { },
               complete: function (res) { },
+            })
+          },
+          fail:function(res){
+            wx.showToast({
+              title: '请允许微信访问位置服务，以便为您找到附近的智能洗衣柜',
+              icon:"none"
             })
           }
         })
@@ -159,12 +211,36 @@ Page({
                 fail: function (res) { },
                 complete: function (res) { },
               })
+            },
+            fail: function (res) {
+              wx.showToast({
+                title: '请允许微信访问位置服务，以便为您找到附近的智能洗衣柜',
+                icon: "none"
+              })
             }
           })
         }
         }
       }
     })
+  },
+  //进入品质页面
+  Gopinzhi(e){
+    if (e.currentTarget.dataset.num==0){
+      wx.navigateTo({
+        url: '../quality/quality?num=' + e.currentTarget.dataset.num,
+      })
+    }else if (e.currentTarget.dataset.num == 1) {
+      wx.navigateTo({
+        url: '../quality/quality?num=' + e.currentTarget.dataset.num,
+      })
+    }else if (e.currentTarget.dataset.num==2){
+      wx.navigateTo({
+        url: '../index/weatertype/weatertype?id=' + e.currentTarget.dataset.id + '&name=' + e.currentTarget.dataset.name + '&index=' + e.currentTarget.dataset.index
+      })
+    } else if (e.currentTarget.dataset.num == 3) {
+      this.Gosmartlist() 
+    }
   },
   formSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e)

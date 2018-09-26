@@ -12,7 +12,7 @@
  <view class='desc'>您当前还未登录,登录后即可查看</view>
  <view class='btn' style='margin-top:60rpx' bindtap='Gologin'>立即登录</view>
 </view>
-<view class='bge5' wx:else>
+<view class='bge5' wx:else style='padding-top: 88rpx;'>
  <view class='order-list' wx:if="{{dataTF}}">
   <view class='img-box flex-box'>
   <image src='http://p7grh1j0l.bkt.clouddn.com/order_on.png'></image>
@@ -41,13 +41,16 @@
    </view>
    <view class='img-list-box'>
     <block wx:for="{{item.orderClothes}}" wx:key="{{item.id}}">
-    <view class="img-list {{(index+1)%2==0?'pl20':''}}">
+    <view class="img-list">
     <view class='flex-box'>
     <image class='img' src='{{item.typeImg}}'></image>
-    <view>     
-    <view class='type'>{{item.clothesName}}</view>
-     <view class='number'>X{{item.clothesNum}}
-     <text class='pl10' wx:if="{{item.orderClothesTwo.length>0}}">(<block wx:for="{{item.orderClothesTwo}}"><text class='pd5'>{{item.clothesName}}:{{item.clothesNum}}</text></block>)</text>
+    <view style='text-align:left;flex:1'>     
+    <view class='type flex-box-btween'>
+     <view>{{item.clothesName}}</view>
+    <view>X{{item.clothesNum}}</view>
+    </view>
+     <view class='number'>
+     <text wx:if="{{item.orderClothesTwo.length>0}}"><block wx:for="{{item.orderClothesTwo}}"><text class='pd5'>{{item.clothesName}}:{{item.clothesNum}}</text></block></text>
      </view>
      </view>
     </view>
@@ -62,8 +65,8 @@
       </button>
   </form>
    </view>
-   <view class='evaluation-box'>
-   <view class='evaluation' bindtap='Evaluation' data-id='{{item.id}}' wx:if="{{item.status==6}}">
+   <view class='evaluation-box' wx:if="{{item.status==6}}">
+   <view class='evaluation' bindtap='Evaluation' data-id='{{item.id}}' >
      评价
    </view>
    </view>

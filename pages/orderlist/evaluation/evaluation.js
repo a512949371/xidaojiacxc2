@@ -111,8 +111,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
   },
   //改变评分星级
   myStarChoose(e) {
@@ -164,6 +167,11 @@ Page({
             url: '../orderdetail/orderdetail?id=' + that.data.evadata.oderId + '&status=7&errstatus=0',
           })
         }
+      })
+    }else{
+      wx.showToast({
+        title: '洗衣印象或反馈信息不能都为空',
+        icon:"none"
       })
     }
     console.log(this.data.evadata)

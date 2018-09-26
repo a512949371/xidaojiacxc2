@@ -1,0 +1,4 @@
+<!--pages/quality/quality.wxml-->
+<view class='quality'>
+ <image src='{{imgdata.src}}' style='width:{{imgdata.width}};height:{{imgdata.height}}'></image>
+</view>

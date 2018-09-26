@@ -1,0 +1,25 @@
+<!--pages/recharge/rechargelist/rechargelist.wxml-->
+<view class='top-border'></view>
+<view class='rechargelist-box bge5'>
+<block wx:for="{{orderlistdata}}" wx:key="{{index}}">
+ <view class='rechargelist'>
+  <view class='money'>{{item.chargeAmount}}</view>
+  <view class='present' wx:if="{{item.giftAmount>0}}">赠送金额{{item.giftAmount}}元</view>
+  <view class='pt50'>
+  <view class='flex-box-btween pt30'>
+   <view class='left'>充值方式</view> 
+   <view class='right' wx:if="{{item.type==1}}">线上充值</view> 
+  </view>
+  <view class='flex-box-btween pt30'>
+   <view class='left'>充值时间</view> 
+   <view class='right'>{{item.createTime}}</view> 
+  </view>
+  <view class='flex-box-btween pt30'>
+   <view class='left'>订单编号</view> 
+   <view class='right'>{{item.payNo}}</view> 
+  </view>
+  </view>  
+ </view>
+</block>
+
+</view>

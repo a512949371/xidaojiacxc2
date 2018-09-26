@@ -1,4 +1,9 @@
 /* pages/befindex/befindex.wxss */
+.flex-box-end{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -55,4 +60,102 @@
   margin: auto;
   line-height: 100rpx;
   font-size: 36rpx;
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99
+}
+.fixed .shaw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .content{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 50px);
+  left:calc(50% - 50px);
+  z-index: 101;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .text-box{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 30px);
+  left:calc(50% - 50px);
+  z-index: 101;
+  text-align: center;
+}
+.fixed .text-box image{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.fixed .text-box .desc{
+  font-size: 28rpx;
+  color: #FFF;
+}
+.showmodel{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99
+}
+.showmodel .shaw{
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.showmodel .content{
+  position: fixed;
+  width: 240px;
+  height: 160px;
+  border-radius: 10rpx;
+  top: calc(50% - 80px);
+  left: calc(50% - 120px); 
+  z-index: 101;
+  background-color: #FFF;
+}
+.showmodel .content .tit{
+  font-size: 32rpx;
+  color: #666;
+  padding: 20rpx;
+  border-bottom: 1px solid #e5e5e5;
+  text-align: center;
+}
+.showmodel .content .desc{
+  padding: 20rpx;
+  color: #999;
+  font-size: 28rpx;
+  line-height: 44rpx
+}
+.showmodel .content .btn-box{
+  position: absolute;
+  bottom: 40rpx;
+  left: 0;
+  right: 0;
+}
+.showmodel .content .btn{
+  padding: 6px 15px;
+  border-radius: 5rpx;
+  background-color: #37d091;
+  color: #fff;
+  font-size: 28rpx;
 }

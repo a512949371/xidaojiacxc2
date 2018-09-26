@@ -6,11 +6,29 @@
       <view class='userinfo-nickname'>登录提醒</view>
   </view>
   <view class='tip pt21'>请点击“开启洗护之旅”</view>
-  <view class='tip pb80'>在柜子前的屏幕上进行下单操作</view>
-  <view class='cabinet-box'><view class='smartark'>智能柜：</view><view class='add'>{{smartinfodata.name}}({{smartinfodata.cabinetNo}})</view></view>
+  <view class='tip pb80'>在柜子前的屏幕上进行操作</view>
+  <view class='cabinet-box'><view class='smartark'>智能柜：</view><view class='add' wx:if="{{smartinfodata.name!=null}}">{{smartinfodata.name}}({{smartinfodata.cabinetNo}})</view></view>
   <view class='mt18'>
   <button class='img' formType="submit" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">开启洗护之旅</button>
   <view wx:else class='' style='padding-left:40rpx'>请升级微信版本</view>
   </view>
 </view>
   </form>
+  <view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>
+<view class='showmodel' wx:if="{{showmodelTF}}">
+ <view class='shaw'></view>
+ <view class='content'>
+  <view class='tit'>登录成功</view>
+  <view class='desc'>{{tiptext}}</view>
+  <view class='btn-box flex-box-end'>
+   <view class='btn' bindtap='Goindex'>确定</view>
+  </view>
+ </view>
+</view>

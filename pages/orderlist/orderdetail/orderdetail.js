@@ -98,8 +98,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
   },
   Reduct(e){
     var weaterdata = this.data.orderdetaildata.orderErrorClothesList.orderClothesVos
@@ -336,4 +339,10 @@ Page({
       url: '../evaluation/evaluation?id=' + e.currentTarget.dataset.id,
     })
   },
+  //返回首页
+  Gohome(){
+    wx.switchTab({
+      url: '../../index/index',
+    })
+  }
 })

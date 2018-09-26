@@ -95,8 +95,11 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
   },
   //切换洗护分类
   Tab(e){

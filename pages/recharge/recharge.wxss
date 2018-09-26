@@ -1,0 +1,168 @@
+/* pages/recharge/recharge.wxss */
+.bge5{
+  background-color: #e5e5e5;
+}
+.bgff{
+  background-color: #fff;
+}
+.flex-box{
+  display: flex;
+  align-items: center;
+}
+.flex-box-btween{
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.flex-box-center{
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.flex-box-end{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end
+}
+.pt20{
+  padding-top: 30rpx;
+}
+.pb100{
+  padding-bottom: 200rpx;
+}
+.pl10{
+padding-left: 10rpx;
+}
+.top-box{
+  padding: 38rpx;
+}
+.top-box .left{
+  font-size: 28rpx;
+  color: #969696;
+}
+.top-box .right{
+  font-size: 28rpx;
+  color: #3396fb;
+}
+.top-box .number{
+  font-size: 70rpx;
+  color: #141414;
+  line-height: 70rpx;
+  font-weight: bold
+}
+.rec-list-box{
+  margin-top: 20rpx;
+  padding: 28rpx;
+}
+.rec-list-box .left{
+  font-size: 28rpx;
+  color: #969696;
+  padding-bottom: 14rpx;
+  padding-left: 10rpx;
+}
+.rec-list-box .rec-list{
+  width: 100%;
+  flex-wrap: wrap;
+}
+.rec-list-box .rec-list .box-one{
+  width: 50%;
+  padding: 14rpx 10rpx;
+  box-sizing: border-box;
+}
+.rec-list-box .rec-list .box{
+  border: 1px solid #f5f5f5;
+  background-color: #f5f5f5;
+  border-radius: 7rpx;
+  text-align: center;
+  padding: 15rpx 0;
+  font-size: 34rpx;
+  color: #787878;
+  position: relative
+}
+.rec-list-box .rec-list .box.active{
+  background-color: #6d83f0;
+  border-color: #6d83f0;
+  color: #fff
+}
+.rec-list-box .rec-list .box .hot{
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background-color: #f16949;
+  font-size: 20rpx;
+  padding: 5rpx 15rpx;
+  border-bottom-left-radius: 7rpx;
+  border-top-right-radius: 7rpx;
+  color: #fff;
+}
+.fixed-box{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0rpx -8rpx 5rpx rgba(129, 129, 129, 0.1);
+  background-color: #fafafa
+}
+.fixed-box .tip{
+  font-size: 28rpx;
+  color: #787878;
+  padding: 28rpx 0;
+}
+.fixed-box .tip .rule{
+  color: #2682ff
+}
+.fixed-box .btn{
+  width: 90%;
+  text-align: center;
+  padding: 20rpx 0;
+  border-radius: 7rpx;
+  background-color: #37d091;
+  color: #FFF;
+  margin-bottom: 20rpx;
+  
+}
+.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999
+}
+.fixed .shaw{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .content{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 50px);
+  left:calc(50% - 50px);
+  z-index: 10001;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.fixed .text-box{
+  width:100px;
+  height:100px;
+  position: fixed;
+  top:calc(50% - 30px);
+  left:calc(50% - 50px);
+  z-index: 10002;
+  text-align: center;
+}
+.fixed .text-box image{
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.fixed .text-box .desc{
+  font-size: 28rpx;
+  color: #FFF;
+}

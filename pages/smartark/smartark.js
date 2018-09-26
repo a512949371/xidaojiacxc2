@@ -58,7 +58,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    this.setData({
+      'pagedata.pageNo': 1,
+      amartaskdata: []
+    })
+    this.Getjson()
   },
 
   /**
@@ -67,15 +71,8 @@ Page({
   onReachBottom: function () {
     this.data.pagedata.pageNo++;
     this.setData({
-      'pagedata.pageNo': this.data.pagedata.pageNo
-    })
-    this.Getjson()
-  },
-  //下拉刷新
-  onPullDownRefresh: function () {
-    this.setData({
-      'pagedata.pageNo':1,
-      amartaskdata:[]
+      'pagedata.pageNo': this.data.pagedata.pageNo,
+      fixedTF: true
     })
     this.Getjson()
   },

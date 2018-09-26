@@ -84,15 +84,20 @@ Page({
   onReachBottom: function () {
     this.data.orderdata.pageNo++
     this.setData({
-      'orderdata.pageNo': this.data.orderdata.pageNo
+      'orderdata.pageNo': this.data.orderdata.pageNo,
+      fixedTF: true
     })
     this.Getjson()
   },
+
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
   },
   //选择订单分类
   Navtab(e){
@@ -121,6 +126,7 @@ Page({
           url: './orderdetail/orderdetail?id=' + e.currentTarget.dataset.id + '&status=' + e.currentTarget.dataset.status + '&errstatus=' + e.currentTarget.dataset.errstatus,
         })
       }else{
+        console.log("3333");
         wx.navigateTo({
           url: './errorderdetail/errorderdetail?id=' + e.currentTarget.dataset.id + '&status=' + e.currentTarget.dataset.status + '&errstatus=' + e.currentTarget.dataset.errstatus,
         })
@@ -135,7 +141,6 @@ Page({
   },
   Getjson(){
     var that=this;
-    console.log("Getjson",this.data.orderdata.pageNo)
     Request.Getorderlist(this.data.orderdata, function (res) {
       that.setData({
         fixedTF: false
@@ -143,20 +148,12 @@ Page({
       if (res.data.isOK) { 
         let str = JSON.stringify(res.data.data.list);
         str = str.replace(/null/g, '""');
+        console.log(that.data.orderlistdata, JSON.parse(str));
         that.setData({
           orderlistdata: that.data.orderlistdata.concat(JSON.parse(str)),
           'orderdata.pageNo': res.data.data.pageNum,
           'orderdata.pageSize': res.data.data.pageSize,
         })
-        if (that.data.orderlistdata.length == 0) {
-          that.setData({
-            dataTF: true
-          })
-        } else {
-          that.setData({
-            dataTF: false
-          })
-        }
       }
       wx.stopPullDownRefresh()
     })  
@@ -198,6 +195,12 @@ Page({
                 fail: function (res) { },
                 complete: function (res) { },
               })
+            },
+            fail: function (res) {
+              wx.showToast({
+                title: '请允许微信访问位置服务，以便为您找到附近的智能洗衣柜',
+                icon: "none"
+              })
             }
           })
         } else {
@@ -225,6 +228,12 @@ Page({
                   success: function (res) { },
                   fail: function (res) { },
                   complete: function (res) { },
+                })
+              },
+              fail: function (res) {
+                wx.showToast({
+                  title: '请允许微信访问位置服务，以便为您找到附近的智能洗衣柜',
+                  icon: "none"
                 })
               }
             })

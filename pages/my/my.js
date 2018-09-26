@@ -10,13 +10,17 @@ Page({
   nick:'',
   headpic:'',
   formId:'',
+  moneydata:{
+    allmoney:'',
+    giftmoney:'',
+    couponNum:''
+  }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function (options) {    
   },
 
   /**
@@ -31,6 +35,29 @@ Page({
    */
   onShow: function () {
     var that = this;
+    Request.Getuserinfo(function (res) {
+      console.log("userinfo", res)
+      
+      if (res.data.isOK) {
+        if (res.data.data != null) {
+          that.setData({
+            'moneydata.allmoney': (res.data.data.balance + res.data.data.giftBalance).toFixed(2),
+            'moneydata.giftmoney': res.data.data.giftBalance.toFixed(2),
+            'moneydata.couponNum': res.data.data.couponNum,
+          })
+        }
+      }
+      if (res.data.data.headImg == null || res.data.data.nickName==null){
+        var wxdata = {
+          nickName: wx.getStorageSync("nick")||"2323",
+          headImg: wx.getStorageSync("headpic")||"3232",
+        }
+        Request.Setheadpic(wxdata, function (res) {
+          console.log('re', res)
+        })
+      }
+      
+    })  
     console.log("nick", wx.getStorageSync("nick"), wx.getStorageSync("isBindPhone"), wx.getStorageSync("headpic"))
     if (wx.getStorageSync("nick")) {
       this.setData({
@@ -96,24 +123,39 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
   },
   //拨打电话
   Gophone(){
     wx.setStorageSync("isout", "1")
     wx.makePhoneCall({
-      phoneNumber: '15288151662' //仅为示例，并非真实的电话号码
+      phoneNumber: '13099968918' //仅为示例，并非真实的电话号码
     })
   },
   //跳转信息编辑
-  Gomyinfo(){
-    wx.navigateTo({
-      url: './myinfo/myinfo',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+  Gomyinfo(e){
+    if(e.currentTarget.dataset.num==0){
+      wx.navigateTo({
+        url: '../recharge/recharge'
+      })
+    } else if (e.currentTarget.dataset.num == 1){
+      wx.navigateTo({
+        url: '../recharge/rechargelist/rechargelist'
+      })
+    } else if (e.currentTarget.dataset.num == 2) {
+      wx.navigateTo({
+        url: '../consumptionlist/consumptionlist'
+      })
+    } else if (e.currentTarget.dataset.num == 3) {
+      wx.navigateTo({
+        url: './myinfo/myinfo'
+      })
+    }
+    
   },
   //登录
   Login(){

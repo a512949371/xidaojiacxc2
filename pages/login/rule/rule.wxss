@@ -1,0 +1,28 @@
+/* pages/login/rule/rule.wxss */
+.rule-tit{
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 32rpx;
+  color: #333
+}
+.rule-box{
+  padding: 0 20rpx;
+}
+.rule{
+  width: 100%
+}
+.rule .tit{
+  text-indent: 48rpx;
+  font-size: 32rpx;
+  color: #333;
+  padding-top: 15rpx;
+  padding-bottom: 10rpx;
+}
+.rule .desc{
+  text-indent: 48rpx;
+  font-size: 28rpx;
+  color: #666
+}
+.pt20{
+  padding-top: 40rpx;
+}

@@ -1,28 +1,34 @@
 /* pages/orderlist/orderlist.wxss */
 .bge5{
-  background-color: #e5e5e5;
+  background-color: #f0f0f0;
 }
 .topnav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   text-align: center;
   background-color: #FFF;
+  border-top: 1px solid #e5e5e5;
+  padding-top: 14rpx;
+  z-index: 999
 
 }
 .nav-item{
   flex: 1;
   font-size: 32rpx;
   color: #999;
-  height: 58rpx;
+  height: 60rpx;
 }
 .nav-item text{
-  padding-bottom: 8rpx;
-  border-bottom:8rpx solid #FFF;
+  padding-bottom: 14rpx;
 }
 .nav-item text.active{
   color: #000;
   font-weight: bold;
-  border-bottom-color: #6d83f0
+  border-bottom: 4px solid #6d83f0
 }
 .list-box{
   width: 100%;
@@ -30,24 +36,25 @@
 }
 .list-box .list{
   padding: 38rpx;
-  margin-top: 20rpx;
+  padding-bottom: 20rpx;
   background-color: #FFF;
+  margin-bottom: 20rpx
 }
 .list-box .list-order{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 30rpx;
-  color: #141414
+  font-size: 26rpx;
+  color: #141414;
+  text-align: left;
 }
 .list-box .list-order .stat-box{
   color: #F4433a;
-  font-size: 28rpx;
+  font-size: 26rpx;
 }
 .img-list-box{
   width: 100%;
   padding-bottom: 20rpx;
-  display: flex;
 }
 .img-list-box .img-list{
   padding-top: 30rpx;
@@ -79,7 +86,7 @@
 .img-list-box .img-list .number{
   color: #000;
   font-size:30rpx;
-  padding-left: 20rpx;
+  padding-left: 15rpx;
 }
 .img-list-box .img-list .number text{
   font-size: 26rpx;
@@ -110,7 +117,7 @@
   padding: 15rpx 0;
 }
 .bor1{
-    border-top: 1px solid #ccc
+    border-top: 1px solid #f0f0f0
 }
 .err-box{
   font-size: 24rpx;
@@ -126,7 +133,7 @@
 .z-num{
   text-align: right;
   font-size: 28rpx;
-  padding: 15rpx 0;
+  padding: 34rpx 0 15rpx 0;
   color: #000;
   font-weight: bold
 }
@@ -200,7 +207,7 @@ button::after{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 99
+  z-index: 9999
 }
 .fixed .shaw{
   position: fixed;
@@ -208,7 +215,7 @@ button::after{
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 10000;
   background-color: rgba(0, 0, 0, 0.5)
 }
 .fixed .content{
@@ -217,7 +224,7 @@ button::after{
   position: fixed;
   top:calc(50% - 50px);
   left:calc(50% - 50px);
-  z-index: 101;
+  z-index: 10001;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.5)
 }
@@ -227,7 +234,7 @@ button::after{
   position: fixed;
   top:calc(50% - 30px);
   left:calc(50% - 50px);
-  z-index: 101;
+  z-index: 10002;
   text-align: center;
 }
 .fixed .text-box image{

@@ -1,6 +1,8 @@
-var Httpone ='http://192.168.1.155:8088/user'
-var Httptwo = 'http://192.168.1.155:8088/order'
-var Httpthree = 'http://192.168.1.155:8088/terminal'
+var Httpone ='https://xdj2.txw18.com/user'
+//var Httpone = 'http://192.168.54.35:8088/user'
+var Httptwo = 'https://xdj2.txw18.com/order'
+var Httpthree = 'https://xdj2.txw18.com/terminal'
+var Httpfour = 'https://xdj2.txw18.com/pay'
 // 获取token
 var Login=function(onsuccess){
  
@@ -85,6 +87,30 @@ var Sms=function(data,onsuccess){
      onsuccess(res)
    })
  }
+ //获取充值选择列表
+ var Recharge = function (data, onsuccess) {
+   Ajaxget(Httptwo, '/api/chargeConfig', data, function (res) {
+     onsuccess(res)
+   })
+ }
+ //下单接口
+ var Produceorder = function (data, onsuccess) {
+   Ajaxpost(Httpfour, '/api/pay/unifiedPay', data, function (res) {
+     onsuccess(res)
+   })
+ }
+ //获取消费记录列表
+ var Transactioncharge = function (data, onsuccess) {
+   Ajaxget(Httptwo, '/api/transaction/charges/' + data.pageSize + '/' + data.pageNo, '', function (res) {
+     onsuccess(res)
+   })
+ }
+ //获取消费记录列表
+ var Transactionpay = function (data, onsuccess) {
+   Ajaxget(Httptwo, '/api/transaction/pays/'+data.pageSize+'/'+data.pageNo, '', function (res) {
+     onsuccess(res)
+   })
+ }
  //获取智能柜列表
  var Getsmartask = function (data, onsuccess) {
    Ajaxget(Httpthree, '/api/cabinetList?pageNo=' + data.pageNo + '&pageSize=' + data.pageSize + '&longitude=' + data.longitude + '&latitude=' + data.latitude, '', function (res) {
@@ -111,7 +137,13 @@ var Sms=function(data,onsuccess){
  }
  //会员登录-开柜接口
  var Viplogin=function(data,onsuccess){
-   Ajaxget(Httpthree, '/api/accountLogin?cabinetNo=' + data.cabinetNo + '&type=' + data.type, '', function (res) {
+   Ajaxget(Httpthree, '/api/accountLogin?cabinetNo=' + data.cabinetNo + '&type=' + data.type+'&id='+data.id, '', function (res) {
+     onsuccess(res)
+   })
+ }
+ //记录用户访问量
+var Uservisit=function(data,onsuccess){
+   Ajaxpost(Httpone,'/api/browseRecord/save',data,function(res){
      onsuccess(res)
    })
  }
@@ -129,6 +161,7 @@ var Ajaxpost=function(Http,url,data,onsuccess){
       onsuccess(res)
     },
     fail:function(res){
+      onsuccess(res)
       wx.showToast({
         title: '网络错误，请等待网络正常之后重试',
         icon: "none",
@@ -153,6 +186,12 @@ var Ajaxpost=function(Http,url,data,onsuccess){
         }
       } else if (res.statusCode == 405){
         wx.setStorageSync("isBindPhone", "0")
+      } else if (res.statusCode == 402) {
+        wx.showToast({
+          title: '该账户已被冻结',
+          icon:"none",
+          duration: 2000
+        })
       }
     }
   })
@@ -171,6 +210,7 @@ var Ajaxget = function (Http,url, data, onsuccess) {
       onsuccess(res)
     },
     fail: function (res) {
+      onsuccess(res)
       wx.showToast({
         title: '网络错误，请等待网络正常之后重试',
         icon:"none",
@@ -196,6 +236,12 @@ var Ajaxget = function (Http,url, data, onsuccess) {
         }
       } else if (res.statusCode == 405) {
         wx.setStorageSync("isBindPhone", "0")
+      } else if (res.statusCode == 402) {
+        wx.showToast({
+          title: '该账户已被冻结',
+          icon: "none",
+          duration: 2000
+        })
       }
         
     }
@@ -221,5 +267,10 @@ module.exports={
   Emergencyask: Emergencyask,
   Smartaskinfo: Smartaskinfo,
   Viplogin: Viplogin,
-  Usertruelogin: Usertruelogin
+  Usertruelogin: Usertruelogin,
+  Uservisit: Uservisit,
+  Recharge: Recharge,
+  Transactionpay: Transactionpay,
+  Transactioncharge: Transactioncharge,
+  Produceorder: Produceorder
 }

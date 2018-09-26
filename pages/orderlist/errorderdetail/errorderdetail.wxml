@@ -1,5 +1,6 @@
 <!--pages/orderlist/orderdetail/orderdetail.wxml-->
 <!--已放件-异常订单  -->
+
  <view wx:if="{{orderstatus==1&&ordererrstatus!=0}}">
 <view class='sata-box'><image src='../../../images/icon_liuc.png' mode="aspectFit"></image></view>
 <view class='shopinfo-box mt15'>
@@ -57,7 +58,7 @@
   <view class='classification-box'>
       <block wx:for="{{orderdetaildata.orderClothes.orderClothesVos}}">
       <view class='flex-box err-img-list' style='margin-top:-1px'>
-      <image src='{{item.typeImg}}' style='width:136rpx;height:112rpx;'></image>
+      <image src='{{item.typeImg}}' style='width:80rpx;height:70rpx;'></image>
       <view class='type'>{{item.classTypeName}}</view>
       <view class='calculate-box'>
        <view class='reduct' bindtap='Reduct' data-index='{{index}}'></view>
@@ -187,7 +188,7 @@
   <view class='shopinfo-box'>
   <view class='h20'></view>
   <view class='storage-box'>
-  <view class='storage-name' wx:if="{{orderdetaildata.useBoxPrice>0}}">储衣价格：<text class='pd5'>￥{{orderdetaildata.useBoxPrice}}  </text><text class='pd5'>({{orderdetaildata.useBoxPrice}})</text></view>
+  <view class='storage-name' wx:if="{{orderdetaildata.useBoxPrice>0}}">储衣价格：<text class='pd5'>￥{{orderdetaildata.useBoxPrice}}  </text><text class='pd5'>({{orderdetaildata.useBoxTime}})</text></view>
   <view class='storage-err pt15'>{{orderdetaildata.dealWithResult}}</view>
   </view>
   </view>
@@ -226,7 +227,7 @@
   <!--待取衣-已取消  -->
   <!--待取衣-异常订单  -->
      <view wx:if="{{orderstatus==5&&ordererrstatus==-2}}">
-<view class='sata-box'><image src='../../../images/icon_liuc-4.png' mode="aspectFit"></image></view>
+<view class='sata-box'><image src='../../../images/icon_liuc-5-1.png' mode="aspectFit"></image></view>
  <view class='shopinfo-box mt15'>
 <view class='err-order-desc flex-box-center'>
 <view style='padding-left:20rpx;'>请到智能柜前取衣</view>
@@ -243,7 +244,7 @@
     <view class='flex-box'>
     <image class='img' src='{{item.typeImg}}'></image>
     <view>     
-    <view class='type'>{{item.classTypeName}}{{index}}</view>
+    <view class='type'>{{item.classTypeName}}</view>
      <view class='number'>X{{item.clothesNum}}
      <text class='pl10' wx:if="{{item.orderClothesListVoTwo.length>0}}">(<block wx:for="{{item.orderClothesListVoTwo}}"><text class='pd5'>{{item.clothesName}}:{{item.clothesNum}}</text></block>)</text>
      </view>
@@ -257,7 +258,7 @@
   <view class='shopinfo-box'>
   <view class='h20'></view>
   <view class='storage-box'>
-  <view class='storage-name' wx:if="{{orderdetaildata.useBoxPrice>0}}">储衣价格：<text class='pd5'>￥{{orderdetaildata.useBoxPrice}}  </text><text class='pd5'>({{orderdetaildata.useBoxPrice}})</text></view>
+  <view class='storage-name' wx:if="{{orderdetaildata.useBoxPrice>0}}">储衣价格：<text class='pd5'>￥{{orderdetaildata.useBoxPrice}}  </text><text class='pd5'>({{orderdetaildata.useBoxTime}})</text></view>
   <view class='storage-err pt15'>异常订单未处理，订单已取消</view>
   </view>
   </view>
@@ -309,4 +310,7 @@
  <image src='../../../images/loading.gif'></image>
  <view class='desc'>加载中...</view>
  </view>
+</view>
+<view class='fixed-home' bindtap='Gohome'>
+ <image src='../../../images/icon_home.png'></image>
 </view>

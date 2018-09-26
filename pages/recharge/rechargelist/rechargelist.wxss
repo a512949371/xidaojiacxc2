@@ -1,0 +1,60 @@
+/* pages/recharge/rechargelist/rechargelist.wxss */
+.flex-box{
+  display: flex;
+  align-items: center;
+}
+.flex-box-btween{
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.flex-box-center{
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.flex-box-end{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end
+}
+.bge5{
+  background-color: #e5e5e5;
+}
+.pt30{
+  padding-top: 30rpx;
+}
+.pt50{
+  padding-top: 50rpx;
+}
+.top-border{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #e5e5e5;
+}
+.rechargelist-box .rechargelist{
+  padding: 32rpx;
+  margin-bottom: 20rpx;
+  background-color: #FFF;
+}
+.rechargelist-box .rechargelist .money{
+  font-size: 60rpx;
+  color: #141414;
+  text-align: center;
+}
+.rechargelist-box .rechargelist .present{
+  font-size: 28rpx;
+  color: #ff6d26;
+  text-align: center;
+  padding-top: 20rpx;
+}
+.rechargelist-box .rechargelist .left{
+  font-size: 28rpx;
+  color: #969696;
+}
+.rechargelist-box .rechargelist .right{
+  font-size: 28rpx;
+  color: #141414;
+}

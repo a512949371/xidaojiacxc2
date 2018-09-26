@@ -1,0 +1,16 @@
+/* pages/recharge/rechargerule/rechargerule.wxss */
+.rule-tip{
+  font-size: 32rpx;
+  color: #333;
+  padding: 30rpx;
+  padding-bottom: 0
+}
+.rule-desc{
+  font-size: 28rpx;
+  color: #666;
+  padding:30rpx;
+  padding-bottom: 0;
+}
+.pb20{
+  padding-bottom: 30rpx;
+}

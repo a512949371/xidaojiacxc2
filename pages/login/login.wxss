@@ -77,7 +77,7 @@ input{
     border: none;
     line-height: 18px;
     width: 100%;
-    padding-left: 10px;
+    padding-left:0px;
     box-sizing: border-box;
     font-size: 14px;
     
@@ -137,6 +137,6 @@ input:focus{
   margin: auto
 }
 .sky{
-  background-color:#6d83f0;
+  background-color:#37d091;
   color: #FFF
 }

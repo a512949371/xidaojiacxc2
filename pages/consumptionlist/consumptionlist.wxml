@@ -1,0 +1,39 @@
+<!--pages/consumptionlist/consumptionlist.wxml-->
+<view class='top-border'></view>
+<view class='consumption-box'>
+<block wx:for="{{orderlistdata}}" wx:key="{{index}}">
+  <view class='consumption-list'>
+   <view class='flex-box-btween'>
+    <view class='type' wx:if="{{item.type==0}}">智能柜消费</view>
+    <view class='type' wx:if="{{item.type==1}}">在线充值</view>
+    <view class='type' wx:if="{{item.type==2}}">门店消费</view>
+    <view class='money'>{{item.amount}} </view>
+   </view>
+   <view class='add-box'>{{item.transactionAddr}}</view>
+   <view class='flex-box-btween'>
+    <view class='time-box'>{{item.createTime}}</view>
+    <view class='pay-box' wx:if="{{item.payType==0}}">
+    <view class='flex-box'>
+     <view class='icon'><image src='../../images/icon_weixin.png'></image></view>
+     <view class='desc'>微信支付</view>
+    </view>
+    </view>
+    <view class='pay-box' wx:if="{{item.payType==1}}">
+    <view class='flex-box'>
+     <view class='icon'><image src='../../images/icon_yue.png'></image></view>
+     <view class='desc'>余额支付</view>
+    </view>
+    </view>
+   </view>
+  </view>
+  </block>
+
+</view>
+<view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>

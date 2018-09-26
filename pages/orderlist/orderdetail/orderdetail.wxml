@@ -143,7 +143,12 @@
    <view class='shop-info'>
    <view class='img'><image src='{{item.typeImg}}'></image></view>
    <view class='name-box'>
+   <view class='flex-box-btween mb20'>
     <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+    <view class='price'>
+      <view>￥{{item.price}}</view>
+    </view>
+   </view>
       <view class='parameter-box'>
     <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
    </view>
@@ -153,9 +158,6 @@
    <view class='parameter-box'>
     <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
    </view>
-   </view>
-   <view class='price'>
-    <view>￥{{item.price}}</view>
    </view>
    </view>
   </view>
@@ -234,7 +236,12 @@
    <view class='shop-info'>
    <view class='img'><image src='{{item.typeImg}}'></image></view>
    <view class='name-box'>
+   <view class='flex-box-btween mb20'>
     <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+    <view class='price'>
+      <view>￥{{item.price}}</view>
+    </view>
+   </view>
       <view class='parameter-box'>
     <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
    </view>
@@ -244,9 +251,6 @@
    <view class='parameter-box'>
     <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
    </view>
-   </view>
-   <view class='price'>
-    <view>￥{{item.price}}</view>
    </view>
    </view>
   </view>
@@ -317,7 +321,9 @@
   <!--待取衣  -->
     <!--待评价  -->
  <view wx:if="{{orderstatus==6}}">
-  <view class='sata-box'><image src='../../../images/icon_liuc-6.png' mode="aspectFit"></image></view>
+  <view class='sata-box' wx:if="{{ordererrstatus==-1}}"><image src='../../../images/icon_liuc-1-2.png' mode="aspectFit"></image></view>
+<view class='sata-box' wx:elif="{{ordererrstatus==-2}}"><image src='../../../images/icon_liuc-5-2.png' mode="aspectFit"></image></view>
+<view class='sata-box' wx:else><image src='../../../images/icon_liuc-6.png' mode="aspectFit"></image></view>
  <view class='shopinfo-box'>
   <view class='desc'>等待您的评价</view> 
   <view class='shopinfo-desc'>
@@ -332,7 +338,12 @@
    <view class='shop-info'>
    <view class='img'><image src='{{item.typeImg}}'></image></view>
    <view class='name-box'>
+   <view class='flex-box-btween mb20'>
     <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+    <view class='price'>
+      <view>￥{{item.price}}</view>
+    </view>
+   </view>
       <view class='parameter-box'>
     <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
    </view>
@@ -342,9 +353,6 @@
    <view class='parameter-box'>
     <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
    </view>
-   </view>
-   <view class='price'>
-    <view>￥{{item.price}}</view>
    </view>
    </view>
   </view>
@@ -426,7 +434,9 @@
   <!--待评价  -->
   <!--已取衣  -->
 <view wx:if="{{orderstatus==7}}">
-  <view class='sata-box'><image src='../../../images/icon_liuc-6.png' mode="aspectFit"></image></view>
+<view class='sata-box' wx:if="{{ordererrstatus==-1}}"><image src='../../../images/icon_liuc-1-2.png' mode="aspectFit"></image></view>
+<view class='sata-box' wx:elif="{{ordererrstatus==-2}}"><image src='../../../images/icon_liuc-5-2.png' mode="aspectFit"></image></view>
+<view class='sata-box' wx:else><image src='../../../images/icon_liuc-6.png' mode="aspectFit"></image></view>
  <view class='shopinfo-box'>
   <view class='desc'>您的订单已完成</view> 
   <!-- <view class='desc' style='margin-top:0;color:#f4433a;padding-top:0'>请在24小时内尽快取走衣物，否则收取储衣价</view>  -->
@@ -442,7 +452,12 @@
    <view class='shop-info'>
    <view class='img'><image src='{{item.typeImg}}'></image></view>
    <view class='name-box'>
+   <view class='flex-box-btween mb20'>
     <view class='name'>{{item.parentClassTypeName}}/{{item.classTypeName}}</view>
+    <view class='price'>
+      <view>￥{{item.price}}</view>
+    </view>
+   </view>
       <view class='parameter-box'>
     <view class='parameter-type'>物品颜色:{{item.clothesColor}}</view>
    </view>
@@ -452,9 +467,6 @@
    <view class='parameter-box'>
     <view class='parameter-type'>物品条形码:{{item.clothesCode}}</view>
    </view>
-   </view>
-   <view class='price'>
-    <view>￥{{item.price}}</view>
    </view>
    </view>
   </view>
@@ -547,4 +559,7 @@
  <image src='../../../images/loading.gif'></image>
  <view class='desc'>加载中...</view>
  </view>
+</view>
+<view class='fixed-home' bindtap='Gohome'>
+ <image src='../../../images/icon_home.png'></image>
 </view>

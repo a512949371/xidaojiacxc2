@@ -14,7 +14,7 @@
 }
 .info-box .status textarea{
   width: 500rpx;
-  text-align: left;
+  text-align: right;
   height: 80rpx;
   line-height: 40rpx;
 }
@@ -47,7 +47,7 @@
   margin-top: 80rpx;
 }
 .h20{
-  height: 40rpx;
+  height: 20rpx;
   width: 100%;
   background-color: #f0f0f0;
 }

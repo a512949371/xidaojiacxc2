@@ -1,0 +1,38 @@
+<!--pages/recharge/recharge.wxml-->
+<view class='bge5 pb100'>
+ <view class='top-box bgff'>
+  <view class='top flex-box-btween'>
+   <view class='left'>当前余额(元)</view>
+   <view class='right' bindtap='Gopaylist'>充值记录</view>
+  </view>
+  <view class='pt20 number'>{{moneydata}}</view>
+ </view>
+
+ <view class='rec-list-box bgff'>
+ <view class='left'>充值金额(元)</view>
+ <view class='rec-list flex-box'>
+ <block wx:for="{{orderlistdata}}" wx:key="{{item.id}}">
+ <view class='box-one'>
+  <view class="box {{actindex===index?'active':''}}" data-id='{{item.id}}' data-money='{{item.chargeAmount}}' bindtap='Changepay' data-num='{{index}}'>
+  <view class='hot' wx:if="{{item.giftAmount>0}}">送</view>
+  <text>{{item.chargeAmount}}</text><text wx:if="{{item.giftAmount>0}}" class="pl10">送{{item.giftAmount}}</text>
+  </view>
+ </view>
+ </block>
+ </view>
+ </view>
+</view>
+<view class='fixed-box'>
+ <view class='tip flex-box-center'><text>点击去充值，即表示同意</text><view class='rule' bindtap='Gorule'>《充值协议》</view></view>
+ <view class='flex-box-center'>
+  <view class='btn' bindtap='Gopay'>立即充值</view>
+ </view>
+</view>
+<view class='fixed' wx:if="{{fixedTF}}">
+ <view class='shaw'></view>
+ <view class='content'></view>
+ <view class='text-box'>
+ <image src='../../images/loading.gif'></image>
+ <view class='desc'>加载中...</view>
+ </view>
+</view>

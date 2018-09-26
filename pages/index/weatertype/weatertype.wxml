@@ -19,7 +19,7 @@
  <view class='shaw'></view>
  <view class='content'></view>
  <view class='text-box'>
- <image src='../../images/loading.gif'></image>
+ <image src='../../../images/loading.gif'></image>
  <view class='desc'>加载中...</view>
  </view>
 </view>

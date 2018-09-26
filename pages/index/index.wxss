@@ -18,6 +18,7 @@ margin-bottom: 20rpx;
   padding-top: 40rpx;
   color: #141414;
   font-size: 32rpx;
+  font-weight: bold;
 }
 .classification-box{
   display: flex;
@@ -64,12 +65,11 @@ margin-bottom: 20rpx;
   display: inline-block;
   width: 60rpx;
   height: 60rpx;
-  margin-top: 40rpx;
 }
 .service-tit{
   font-size: 26rpx;
   color: #646464;
-  margin-top: 24rpx;
+  margin-top: 10rpx;
 }
 .inner-banner{
   padding: 28rpx 24rpx;

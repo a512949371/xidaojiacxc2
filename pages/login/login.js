@@ -28,6 +28,16 @@ Page({
   },
   onLoad: function () {
   },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (res) {
+    return {
+      title: '洗到家-智能洗衣柜，您的衣鞋洗护管家，解决社区洗衣最后一公里',
+      path: '/pages/index/index?page=share'
+    }
+  },
   Input(e) {
     let num = e.target.dataset.num;
     if (num == 1) {
@@ -105,9 +115,17 @@ Page({
             key: 'isBindPhone',
             data: 1,
           })
+          console.log(decodeURIComponent(app.smartdata.scene).split("&")[0].split("=")[0])
+          if (decodeURIComponent(app.smartdata.scene).split("&")[0].split("=")[0] != "no") {
             wx.switchTab({
               url: '../index/index',
             })
+          }else{
+            wx.navigateTo({
+              url: '../befindex/befindex',
+            })
+          }
+            
         }else{
           wx.showToast({
             title: res.data.msg,
@@ -194,5 +212,11 @@ Page({
         logintf: false
       })
     }
+  },
+  //进入协议
+  Gorule(){
+    wx.navigateTo({
+      url: './rule/rule',
+    })
   }
 })

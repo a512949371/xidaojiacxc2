@@ -1,18 +1,37 @@
 //app.js
 import Request from './datajson/request.js';
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
     // 展示本地存储能力
   },
   onShow:function(options){
     var that=this;
-    this.smartdata = options.query;
+    this.smartdata = options.query;  //{ scene: "no%3D000117023%26tp%3D552%26id%3Daqrb7333" };
     if (wx.getStorageSync('token') && wx.getStorageSync('isBindPhone') == 1) {
-      if (decodeURIComponent(this.smartdata.scene).split("&")[0].split("=")[0] !="cabinetId") {
+      console.log("345",this.smartdata);
+      if (decodeURIComponent(this.smartdata.scene).split("&")[0].split("=")[0] !="no") {
+        console.log("share", this.smartdata.page);
+        if (decodeURIComponent(this.smartdata.scene).split("&")[0].split("=")[0] == "page"){
+          var data={
+            channel:1,
+            type: decodeURIComponent(this.smartdata.scene).split("&")[0].split("=")[1]
+          }
+          Request.Uservisit(data,function(res){
+            console.log("Uservisitshare",res)
+          })
+        }else{
+          var data = {
+            channel: 1,
+            type: this.smartdata.page||'icon'
+          }
+          Request.Uservisit(data, function (res) {
+            console.log("Uservisit", res)
+          })
+        }
         wx.getSetting({
           success:function(res){
             if (res.authSetting['scope.userInfo']){
-              if (wx.getStorageSync("isout")){
+              if (wx.getStorageSync("isout") || JSON.stringify(that.smartdata)!='{}'){
                 wx.removeStorageSync("isout");
                 console.log("2", that.smartdata)
               }else{
@@ -20,21 +39,18 @@ App({
                   url: '/pages/index/index',
                 })
               }
-              
-            }else{
-              wx.navigateTo({
-                url: '/pages/befindexmin/befindexmin',
-              })
             }
           }
         })
       }else{
-        console.log(decodeURIComponent(this.smartdata.scene).split("&")[0].split("=")[0])
-        wx.navigateTo({
-          url: '/pages/befindex/befindex',
+        var data = {
+          channel: 1,
+          type: 'teminal'
+        }
+        Request.Uservisit(data, function (res) {
+          console.log("Uservisitteminal", res)
         })
       }
-
     } else {
       Request.Login(function (res) {
         console.log(res)
@@ -45,8 +61,28 @@ App({
         wx.setStorage({
           key: "isBindPhone",
           data: res.data.data.isBindPhone
-        })
-          if (decodeURIComponent(that.smartdata.scene).split("&")[0].split("=")[0] != "cabinetId") {
+        }) 
+        console.log(that.smartdata)   
+          if (decodeURIComponent(that.smartdata.scene).split("&")[0].split("=")[0] !="no") {
+            console.log("share", decodeURIComponent(that.smartdata.scene).split("&")[0].split("=")[0]);
+            if (decodeURIComponent(that.smartdata.scene).split("&")[0].split("=")[0] == "page") {
+              var data = {
+                channel: 1,
+                type: decodeURIComponent(that.smartdata.scene).split("&")[0].split("=")[1]
+              }
+              Request.Uservisit(data, function (res) {
+                console.log("Uservisitshare", res)
+              })
+            } else {
+              console.log("走到这里了")
+              var data = {
+                channel: 1,
+                type:that.smartdata.page||'icon'
+              }
+              Request.Uservisit(data, function (res) {
+                console.log("Uservisit", res)
+              })
+            }
             wx.getSetting({
               success: function (res) {
                 console.log("r", res)
@@ -54,18 +90,23 @@ App({
                   wx.switchTab({
                     url: '/pages/index/index',
                   })
-                } else {
-                  wx.navigateTo({
-                    url: '/pages/befindexmin/befindexmin',
-                  })
                 }
               }
             })
           } else {
-            wx.navigateTo({
-              url: '/pages/befindex/befindex',
+            var data = {
+              channel: 1,
+              type: 'teminal'
+            }
+            Request.Uservisit(data, function (res) {
+              console.log("Uservisitteminal", res)
             })
-          }
+            if (res.data.data.isBindPhone == 0) {
+              wx.redirectTo({
+                url: '/pages/login/login',
+              })
+            }
+        } 
       })
     }
   },

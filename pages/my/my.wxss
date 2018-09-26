@@ -1,4 +1,29 @@
 /* pages/my/my.wxss */
+.flex-box{
+  display: flex;
+  align-items: center;
+}
+.flex-box-btween{
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+.flex-box-center{
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.flex-box-end{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end
+}
+.pt30{
+  padding-top: 30rpx;
+}
+.pt50{
+  padding-top: 50rpx;
+}
 .info-box{
   padding-top: 40rpx;
   padding-bottom: 80rpx;
@@ -31,21 +56,16 @@
   line-height: 56rpx;
   margin-left: 44rpx;
 }
-.flex-box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 54rpx;
-}
+
 .user-list-box{
   padding: 0 48rpx;
 }
 .user-list{
-  padding: 34rpx;
+  padding: 34rpx 0;
   display: flex;
   align-items: center;
-  background: url(http://p7grh1j0l.bkt.clouddn.com/mine_listBg.png) no-repeat top center;
   background-size: 100%;
+  border-bottom: 1px solid #dcdcdc
 }
 .user-list .desc{
   flex: 1;
@@ -75,4 +95,27 @@
 }
 button::after{
   border: none
+}
+.pay-box{
+  width: 90%;
+  padding: 35rpx 0;
+  background: url("http://p7grh1j0l.bkt.clouddn.com/mine_bg.png") center center;
+  background-size: cover;
+}
+.pay-box .box{
+  width: 33%;
+  text-align: center;
+  box-sizing: border-box
+}
+.pay-box .box .important{
+  font-size: 32rpx;
+  color: #1e1e1e;
+}
+.pay-box .box .desc{
+  font-size: 24rpx;
+  color: #969696;
+  padding-top: 10rpx;
+}
+.pay-box .bor-left{
+  border-left: 1px solid #d2d2d2;
 }

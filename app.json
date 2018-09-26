@@ -1,6 +1,10 @@
 {
   "pages": [
     "pages/befindexmin/befindexmin",
+    "pages/recharge/recharge",
+    "pages/my/my",
+    "pages/consumptionlist/consumptionlist",
+    "pages/recharge/rechargelist/rechargelist",
     "pages/index/index",
     "pages/befindex/befindex",
     "pages/orderlist/orderlist",
@@ -8,21 +12,23 @@
     "pages/orderlist/errorderdetail/errorderdetail",
     "pages/orderlist/evaluation/evaluation",
     "pages/smartark/smartark",
-    "pages/my/my",
     "pages/my/myinfo/myinfo",
     "pages/login/login",
     "pages/index/weatertype/weatertype",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/quality/quality",
+    "pages/login/rule/rule",
+    "pages/recharge/rechargerule/rechargerule"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "洗到家",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
+    "selectedColor": "#6d83f0",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
     "list": [
